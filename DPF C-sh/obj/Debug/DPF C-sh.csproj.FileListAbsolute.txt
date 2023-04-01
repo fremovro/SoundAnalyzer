@@ -1,0 +1,36 @@
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.pdb
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csprojResolveAssemblyReference.cache
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csproj.GenerateResource.Cache
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.exe
+c:\users\dmitriy\documents\visual studio 2012\Projects\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csproj.GenerateResource.Cache
+C:\Users\Masha\Documents\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csprojResolveAssemblyReference.cache
+E:\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+E:\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.exe
+E:\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.pdb
+E:\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe
+E:\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.pdb
+E:\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csprojResolveAssemblyReference.cache
+E:\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+E:\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+E:\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csproj.GenerateResource.Cache
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csprojResolveAssemblyReference.cache
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\Arisha\Desktop\DPF C-sh\DPF C-sh\obj\Debug\DPF C-sh.csproj.GenerateResource.Cache

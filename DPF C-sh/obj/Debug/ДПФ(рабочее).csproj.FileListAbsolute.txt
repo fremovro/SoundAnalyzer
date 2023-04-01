@@ -1,0 +1,62 @@
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csprojResolveAssemblyReference.cache
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.GenerateResource.Cache
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.dll
+C:\Users\Arisha\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.xml
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.dll
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.xml
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csprojResolveAssemblyReference.cache
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\Dmitriy\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.GenerateResource.Cache
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.dll
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.xml
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csprojResolveAssemblyReference.cache
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\adm\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.GenerateResource.Cache
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.dll
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.xml
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.AssemblyReference.cache
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.SuggestedBindingRedirects.cache
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.GenerateResource.cache
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.CoreCompileInputs.cache
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.CopyComplete
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.dll
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\bin\Debug\NAudio.xml
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Form1.resources
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.CopyComplete
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\Admin\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\DPF C-sh.pdb
+C:\Users\fremovro\Desktop\ДПФ (Рабочее)\DPF C-sh\obj\Debug\ДПФ(рабочее).csproj.ResolveComReference.cache
