@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
 using DPF_C_sh.Models;
-using static alglib;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace DPF_C_sh.Methods
 {
@@ -16,11 +9,12 @@ namespace DPF_C_sh.Methods
     {
         public AccessoryMethods() { }
 
-        public void PrintFileDataGraphByKey(ref MainViewModel dataContext, NumericUpDown numUpTimeStart, Panel panel, 
+        public void PrintFileDataGraphByKey(ref MainDataModel dataContext, NumericUpDown numUpTimeStart, Panel panel, 
             TextBox chosenFileName, int fileKey)
         {
             var chosenFile = dataContext.wavFiles
                 .Where(el => el.Key == fileKey).FirstOrDefault();
+
             if (dataContext.fileDataChart == null)
             {
                 // Создание элемента Chart
@@ -59,8 +53,14 @@ namespace DPF_C_sh.Methods
             chosenFileName.Text = chosenFile.Value.fileName;
         }
 
-        public void PrintResultDataGraph(ref MainViewModel dataContext, Panel panel, NumericUpDown NumUpSmooth)
+        public void PrintResultDataGraphByKey(ref MainDataModel dataContext, Panel panel, NumericUpDown NumUpSmooth, TextBox ChosenFileName)
         {
+            var chosenFile = dataContext.wavFiles
+                .Where(el => el.Value.fileName == ChosenFileName.Text).FirstOrDefault();
+
+            var chosenResultDpf = dataContext.resultDpf
+                .Where(el => el.Key == chosenFile.Key).FirstOrDefault();
+
             if (dataContext.dpfDataChart is null)
             {
                 // Создание элемента Chart
@@ -69,29 +69,30 @@ namespace DPF_C_sh.Methods
                 // Растягивание элемента Chart на панели
                 dataContext.dpfDataChart.Parent = panel;
                 dataContext.dpfDataChart.Dock = DockStyle.Fill;
-
-                // Добавление области для отрисовки графика
-                var chartArea = new ChartArea("Area1");
-                chartArea.AxisX.IsLogarithmic = true;
-                dataContext.dpfDataChart.ChartAreas.Add(chartArea);
             }
             else
+            {
                 dataContext.dpfDataChart.Series.Clear();
+                dataContext.dpfDataChart.ChartAreas.Clear();
+            }
 
-            // Создание и настройка набора точек для рисования графика
-            var pointSeries = new Series("Sound");
+            // Добавление области для отрисовки графика
+            dataContext.dpfDataChart.ChartAreas.Add(new ChartArea(chosenFile.Value.fileName));
+
+            // Создаем и настраиваем набор точек для рисования графика
+            Series pointSeries = new Series("Sound");
             pointSeries.ChartType = SeriesChartType.Line;
-            pointSeries.ChartArea = "Area1";
+            pointSeries.ChartArea = chosenFile.Value.fileName;
 
             // Сглаживание
             for (int k = 0; k < NumUpSmooth.Value; k++)
                 for (int j = 0, m = 4; j < m; j++)
-                    for (int i = 2, l = dataContext.resultDpfData.Count - 1; i < l; i++)
-                        dataContext.resultDpfData[i].Amplitude = 0.5 * (0.5 * (dataContext.resultDpfData[i - 1].Amplitude 
-                            + dataContext.resultDpfData[i + 1].Amplitude) + dataContext.resultDpfData[i].Amplitude);
+                    for (int i = 2, l = chosenResultDpf.Value.resultDpfData.Count - 1; i < l; i++)
+                        chosenResultDpf.Value.resultDpfData[i].Amplitude = 0.5 * (0.5 * (chosenResultDpf.Value.resultDpfData[i - 1].Amplitude 
+                            + chosenResultDpf.Value.resultDpfData[i + 1].Amplitude) + chosenResultDpf.Value.resultDpfData[i].Amplitude);
 
             // Заполнение набора точек
-            foreach(var data in dataContext.resultDpfData)
+            foreach(var data in chosenResultDpf.Value.resultDpfData)
                 if (data.Frecuency > 0)
                     pointSeries.Points.AddXY(data.Frecuency, data.Amplitude);
 
@@ -99,16 +100,23 @@ namespace DPF_C_sh.Methods
             dataContext.dpfDataChart.Series.Add(pointSeries);
         }
 
-        public void PrintRequencyRatios(MainViewModel dataContext, TextBox textBox)
+        public void PrintRequencyRatiosByKey(MainDataModel dataContext, TextBox textBox, TextBox ChosenFileName)
         {
-            textBox.Text += "Полученные отношения частот:\r\n";
+            var chosenFile = dataContext.wavFiles
+                .Where(el => el.Value.fileName == ChosenFileName.Text).FirstOrDefault();
 
-            foreach(var e in dataContext.requencyRatios)
+            var chosenResultRR = dataContext.requencyRatios
+                .Where(el => el.Key == chosenFile.Key).FirstOrDefault();
+
+            textBox.Text = "Полученные отношения частот:\r\n";
+
+            foreach(var e in chosenResultRR.Value)
                 textBox.Text += e.ToString() + "\r\n";
         }
 
-        public void ChoseNextFile(ref MainViewModel dataContext, NumericUpDown numUpTimeStart, Panel panel,
-            TextBox chosenFileName, int fileKey, bool left)
+        public void ChoseNextFile(ref MainDataModel dataContext, NumericUpDown numUpTimeStart, NumericUpDown numUpSmooth,
+            Panel filePanel, Panel dpfPanel,
+            TextBox chosenFileName, TextBox chosenRequency, int fileKey, bool left)
         {
             string newName = string.Empty;
 
@@ -121,12 +129,19 @@ namespace DPF_C_sh.Methods
 
             if(newChosenFile.Value != null)
             {
-                PrintFileDataGraphByKey(ref dataContext, numUpTimeStart, panel,
-                    chosenFileName, newChosenFile.Key);
+                if (dataContext.wavFiles.Any())
+                    PrintFileDataGraphByKey(ref dataContext, numUpTimeStart, filePanel,
+                        chosenFileName, newChosenFile.Key);
+
+                if(dataContext.resultDpf.Any())
+                    PrintResultDataGraphByKey(ref dataContext, dpfPanel, numUpSmooth, chosenFileName);
+
+                if(dataContext.requencyRatios.Any())
+                    PrintRequencyRatiosByKey(dataContext, chosenRequency, chosenFileName);
             }
         }
 
-        public void CreateExcelRequencyRatios(MainViewModel dataContext)
+        public void CreateExcelRequencyRatios(MainDataModel dataContext)
         {
             //// Создаём объект - экземпляр нашего приложения
             //Excel.Application excelApp = new Excel.Application();

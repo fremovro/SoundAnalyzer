@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DPF_C_sh.Models
+﻿namespace DPF_C_sh.Models
 {
     internal class SoundElement
     {

@@ -1,8 +1,5 @@
-﻿using NAudio.Wave;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using static alglib;
 using DPF_C_sh.Models;
 using DPF_C_sh.Methods;
 using System.Linq;
@@ -11,7 +8,7 @@ namespace DPF_C_sh
 {
     public partial class SoundAnalyzer : Form
     {
-        private MainViewModel _dataContext;
+        private MainDataModel _dataContext;
         private DataManagerMethods _dataManagerMethods;
         private AccessoryMethods _accessoryMethods;
 
@@ -19,15 +16,13 @@ namespace DPF_C_sh
         {
             InitializeComponent();
 
-            _dataContext = new MainViewModel();
+            _dataContext = new MainDataModel();
             _dataManagerMethods = new DataManagerMethods();
             _accessoryMethods = new AccessoryMethods();
         }
 
         private void SoundAnalyzer_Load(object sender, EventArgs e)
         {
-
-            OpenFilePart.Bi
             //for (int waveInDevice = 0; waveInDevice < WaveIn.DeviceCount; waveInDevice++)
             //{
             //    WaveInCapabilities deviceInfo = WaveIn.GetCapabilities(waveInDevice);
@@ -58,26 +53,26 @@ namespace DPF_C_sh
         {
             _dataManagerMethods.DPF(ref _dataContext);
 
-            _accessoryMethods.PrintResultDataGraph(ref _dataContext, DpfDataPanel, NumUpSmooth);
+            _accessoryMethods.PrintResultDataGraphByKey(ref _dataContext, DpfDataPanel, NumUpSmooth, ChosenFileName);
         }
 
         private void CalculateRequencyRatios_Click(object sender, EventArgs e)
         {
             _dataManagerMethods.CalculateRequencyRatios(ref _dataContext, NumUpMaxCount, NumUpIdent);
 
-            _accessoryMethods.PrintRequencyRatios(_dataContext, TextBoxRequency);
+            _accessoryMethods.PrintRequencyRatiosByKey(_dataContext, ChosenRequency, ChosenFileName);
         }
 
         private void LeftChangeFile_Click(object sender, EventArgs e)
         {
-            _accessoryMethods.ChoseNextFile(ref _dataContext, NumUpTimeStart, FileDataPanel,
-                    ChosenFileName, _dataContext.wavFiles.First().Key, true);
+            _accessoryMethods.ChoseNextFile(ref _dataContext, NumUpTimeStart, NumUpSmooth, FileDataPanel, DpfDataPanel,
+                    ChosenFileName, ChosenRequency, _dataContext.wavFiles.First().Key, true);
         }
 
         private void RightChangeFile_Click(object sender, EventArgs e)
         {
-            _accessoryMethods.ChoseNextFile(ref _dataContext, NumUpTimeStart, FileDataPanel,
-                    ChosenFileName, _dataContext.wavFiles.First().Key, false);
+            _accessoryMethods.ChoseNextFile(ref _dataContext, NumUpTimeStart, NumUpSmooth, FileDataPanel, DpfDataPanel,
+                    ChosenFileName, ChosenRequency, _dataContext.wavFiles.First().Key, false);
         }
     }
 }

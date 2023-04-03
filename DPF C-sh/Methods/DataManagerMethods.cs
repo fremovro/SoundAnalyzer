@@ -20,16 +20,13 @@ namespace DPF_C_sh.Methods
         /// <param name="numUpTimeStart"></param>
         /// <param name="numUpTimeRange"></param>
         /// <param name="dataContext"></param>
-        public void ReadWavFiles(OpenFileDialog fileDialog, NumericUpDown numUpTimeStart, NumericUpDown numUpTimeRange, ref MainViewModel dataContext)
+        public void ReadWavFiles(OpenFileDialog fileDialog, NumericUpDown numUpTimeStart, NumericUpDown numUpTimeRange, ref MainDataModel dataContext)
         {
             dataContext.wavFiles = new Dictionary<int, WavFileModel>();
             var index = 0;
 
             foreach(var file in fileDialog.FileNames)
             {
-                int xxp;
-                if (index == 2)
-                    xxp = 0;
                 using (FileStream fileStream = new FileStream(file, FileMode.Open))
                 using (BinaryReader reader = new BinaryReader(fileStream))
                 {
@@ -100,53 +97,57 @@ namespace DPF_C_sh.Methods
         /// <param name="dataContext"></param>
         /// <param name="maxAmplitude"></param>
         /// <returns></returns>
-        public void DPF(ref MainViewModel dataContext)
+        public void DPF(ref MainDataModel dataContext)
         {
-            var result = new List<SoundElement>();
-            //var minAmplitude = double.MaxValue;
-            var maxAmplitude = double.MinValue;
+            dataContext.resultDpf = new Dictionary<int, ResultDpfModel>();
 
-            int n = dataContext.wavFile.soundData.Length;
-            if (n > 0)
+            foreach (var file in dataContext.wavFiles)
             {
-                alglib.complex[] dpfResult = new alglib.complex[n];
-                alglib.fftr1d(dataContext.wavFile.soundData, n, out dpfResult);
+                var result = new List<SoundElement>();
+                var maxAmplitude = double.MinValue;
 
-                // частота = частота дискретизации / размер массива
-                var frequency = (double)dataContext.wavFile.sampleRate / n;
-
-                for (int k = 0; k < n / 2; k++)
+                int n = file.Value.soundData.Length;
+                if (n > 0)
                 {
-                    var amplitudeValue = (2 * Math.Sqrt(Math.Pow(dpfResult[k].x, 2) + Math.Pow(dpfResult[k].y, 2))) / n;
-                    var frequencyValue = frequency * k;
+                    alglib.complex[] dpfResult = new alglib.complex[n];
+                    alglib.fftr1d(file.Value.soundData, n, out dpfResult);
 
-                    maxAmplitude = amplitudeValue > maxAmplitude ? amplitudeValue : maxAmplitude;
-                    //minAmplitude = amplitudeValue < minAmplitude ? amplitudeValue : minAmplitude;
+                    // частота = частота дискретизации / размер массива
+                    var frequency = (double)file.Value.sampleRate / n;
 
-                    result.Add(new SoundElement(amplitudeValue, frequencyValue));
+                    for (int k = 0; k < n / 2; k++)
+                    {
+                        var amplitudeValue = (2 * Math.Sqrt(Math.Pow(dpfResult[k].x, 2) + Math.Pow(dpfResult[k].y, 2))) / n;
+                        var frequencyValue = frequency * k;
+
+                        maxAmplitude = amplitudeValue > maxAmplitude ? amplitudeValue : maxAmplitude;
+
+                        result.Add(new SoundElement(amplitudeValue, frequencyValue));
+                    }
                 }
+
+                dataContext.resultDpf.Add(file.Key, new ResultDpfModel(result, maxAmplitude));
             }
-
-            dataContext.maxDpfAmplitude = maxAmplitude;
-
-            dataContext.resultDpfData = result;
         }
 
-        public void CalculateRequencyRatios(ref MainViewModel dataContext, NumericUpDown numUpMaxCount, NumericUpDown numUpIdent)
+        public void CalculateRequencyRatios(ref MainDataModel dataContext, NumericUpDown numUpMaxCount, NumericUpDown numUpIdent)
         {
-            dataContext.requencyRatios = new List<double>();
+            dataContext.requencyRatios = new Dictionary<int, List<double>>();
 
-            var delta = (int)numUpIdent.Value;
-
-            var resultLocalMaximum = FindLocalMaximum(dataContext.resultDpfData, delta, numUpMaxCount);
-
-            for (int k = 0; k < resultLocalMaximum.Count; k++)
+            foreach (var resultDpf in dataContext.resultDpf)
             {
-                for (int l = k + 1; l < resultLocalMaximum.Count; l++)
-                {
-                    dataContext.requencyRatios.Add(resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency >= 1 
-                        ? resultLocalMaximum[l].Frecuency / resultLocalMaximum[k].Frecuency : resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency);
-                }
+                var delta = (int)numUpIdent.Value;
+
+                var resultLocalMaximum = FindLocalMaximum(resultDpf.Value.resultDpfData, delta, numUpMaxCount);
+
+                dataContext.requencyRatios.Add(resultDpf.Key, new List<double>());
+
+                for (int k = 0; k < resultLocalMaximum.Count; k++)
+                    for (int l = k + 1; l < resultLocalMaximum.Count; l++)
+                    {
+                        dataContext.requencyRatios[resultDpf.Key].Add(resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency >= 1
+                            ? resultLocalMaximum[l].Frecuency / resultLocalMaximum[k].Frecuency : resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency);
+                    }
             }
         }
 
@@ -157,44 +158,32 @@ namespace DPF_C_sh.Methods
             SoundElement temp;
 
             for (int i = 2; i < resultData.Count() - 1; i++)
-            {
                 if (resultData[i].Amplitude > resultData[i + 1].Amplitude && resultData[i].Amplitude > resultData[i - 1].Amplitude)
-                {
                     resultTemp.Add(resultData[i]);
-                }
-            }
+
             for (int i = 0; i < resultTemp.Count() - 1; i++)
-            {
                 for (int j = i + 1; j < resultTemp.Count(); j++)
-                {
                     if (resultTemp[i].Amplitude < resultTemp[j].Amplitude)
                     {
                         temp = resultTemp[j];
                         resultTemp[j] = resultTemp[i];
                         resultTemp[i] = temp;
                     }
-                }
-            }
+
             for (int i = 0; i < resultTemp.Count(); i++)
-            {
                 if (i == 0)
-                {
                     res.Add(resultTemp[i]);
-                }
                 else
                 {
                     bool f = true;
                     for (int j = 0; j < res.Count(); j++)
-                    {
                         if (Math.Abs(resultTemp[i].Frecuency - res[j].Frecuency) < separatorCount)
-                        {
                             f = false;
-                        }
-                    }
                     if (f) res.Add(resultTemp[i]);
                 }
-            }
+
             res.RemoveRange((int)numUpMaxCount.Value, res.Count() - (int)numUpMaxCount.Value);
+
             return res;
         }
     }

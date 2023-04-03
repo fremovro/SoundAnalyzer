@@ -52,6 +52,7 @@
     <Compile Include="Libraries\alglib\alglibinternal.cs" />
     <Compile Include="Libraries\alglib\ap.cs" />
     <Compile Include="Libraries\alglib\fasttransforms.cs" />
+    <Compile Include="Models\ResultDpfModel.cs" />
     <Compile Include="Models\SoundElement.cs" />
     <Compile Include="SoundAnalyzer.cs">
       <SubType>Form</SubType>

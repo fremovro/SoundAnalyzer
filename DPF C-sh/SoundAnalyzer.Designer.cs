@@ -40,7 +40,7 @@
             this.NumUpSmooth = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.NumUpMaxCount = new System.Windows.Forms.NumericUpDown();
-            this.TextBoxRequency = new System.Windows.Forms.TextBox();
+            this.ChosenRequency = new System.Windows.Forms.TextBox();
             this.LeftChangeFile = new System.Windows.Forms.Button();
             this.RightChangeFile = new System.Windows.Forms.Button();
             this.ChosenFileName = new System.Windows.Forms.TextBox();
@@ -198,12 +198,12 @@
             // 
             // TextBoxRequency
             // 
-            this.TextBoxRequency.Location = new System.Drawing.Point(12, 258);
-            this.TextBoxRequency.Multiline = true;
-            this.TextBoxRequency.Name = "TextBoxRequency";
-            this.TextBoxRequency.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TextBoxRequency.Size = new System.Drawing.Size(168, 164);
-            this.TextBoxRequency.TabIndex = 23;
+            this.ChosenRequency.Location = new System.Drawing.Point(12, 258);
+            this.ChosenRequency.Multiline = true;
+            this.ChosenRequency.Name = "ChosenRequency";
+            this.ChosenRequency.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ChosenRequency.Size = new System.Drawing.Size(168, 164);
+            this.ChosenRequency.TabIndex = 23;
             // 
             // LeftChangeFile
             // 
@@ -245,7 +245,7 @@
             this.Controls.Add(this.ChosenFileName);
             this.Controls.Add(this.RightChangeFile);
             this.Controls.Add(this.DPF);
-            this.Controls.Add(this.TextBoxRequency);
+            this.Controls.Add(this.ChosenRequency);
             this.Controls.Add(this.NumUpMaxCount);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.NumUpSmooth);
@@ -284,7 +284,7 @@
         private System.Windows.Forms.NumericUpDown NumUpSmooth;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.NumericUpDown NumUpMaxCount;
-        private System.Windows.Forms.TextBox TextBoxRequency;
+        private System.Windows.Forms.TextBox ChosenRequency;
         private System.Windows.Forms.Button LeftChangeFile;
         private System.Windows.Forms.Button RightChangeFile;
         private System.Windows.Forms.TextBox ChosenFileName;

@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DPF_C_sh.Models
 {
-    internal class MainViewModel
+    internal class MainDataModel
     {
         public Dictionary<int, WavFileModel> wavFiles { get; set; }
-        public List<SoundElement> resultDpfData { get; set; }
-        public List<double> requencyRatios { get; set; }
+        public Dictionary<int, ResultDpfModel> resultDpf { get; set; }
+        public Dictionary<int, List<double>> requencyRatios { get; set; }
         public Chart fileDataChart { get; set; }
         public Chart dpfDataChart { get; set; }
-        public double maxDpfAmplitude { get; set; }
 
-        public MainViewModel() 
+        public MainDataModel() 
         {
             fileDataChart = null;
             dpfDataChart = null;
+            wavFiles = new Dictionary<int, WavFileModel>();
+            resultDpf = new Dictionary<int, ResultDpfModel>();
+            requencyRatios = new Dictionary<int, List<double>>();
         }
     }
 }
