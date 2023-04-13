@@ -31,7 +31,6 @@
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.LeftChangeFile = new System.Windows.Forms.Button();
             this.OpenFilePart = new System.Windows.Forms.Button();
             this.ChosenFileName = new System.Windows.Forms.TextBox();
@@ -47,6 +46,17 @@
             this.CalculateRequencyRatios = new System.Windows.Forms.Button();
             this.NumUpTimeRange = new System.Windows.Forms.NumericUpDown();
             this.NumUpTimeStart = new System.Windows.Forms.NumericUpDown();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.learnNetwork = new System.Windows.Forms.Button();
+            this.openNetwork = new System.Windows.Forms.Button();
+            this.activationSelector = new System.Windows.Forms.ComboBox();
+            this.algoritmSelector = new System.Windows.Forms.ComboBox();
+            this.layerSelector = new System.Windows.Forms.ComboBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.predictGet = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpMaxCount)).BeginInit();
@@ -54,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumUpIdent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeStart)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenFileDialog
@@ -94,16 +105,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DPF";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1138, 501);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "NeuronNetwork";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // LeftChangeFile
             // 
@@ -293,13 +294,139 @@
             0,
             0});
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.learnNetwork);
+            this.tabPage2.Controls.Add(this.openNetwork);
+            this.tabPage2.Controls.Add(this.activationSelector);
+            this.tabPage2.Controls.Add(this.algoritmSelector);
+            this.tabPage2.Controls.Add(this.layerSelector);
+            this.tabPage2.Controls.Add(this.richTextBox1);
+            this.tabPage2.Controls.Add(this.predictGet);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1135, 501);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "NeuronNetwork";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // learnNetwork
+            // 
+            this.learnNetwork.Location = new System.Drawing.Point(105, 249);
+            this.learnNetwork.Name = "learnNetwork";
+            this.learnNetwork.Size = new System.Drawing.Size(142, 23);
+            this.learnNetwork.TabIndex = 20;
+            this.learnNetwork.Text = "Обучить";
+            this.learnNetwork.UseVisualStyleBackColor = true;
+            // 
+            // openNetwork
+            // 
+            this.openNetwork.Location = new System.Drawing.Point(921, 176);
+            this.openNetwork.Name = "openNetwork";
+            this.openNetwork.Size = new System.Drawing.Size(160, 53);
+            this.openNetwork.TabIndex = 19;
+            this.openNetwork.Text = "Открыть файл готовой сети";
+            this.openNetwork.UseVisualStyleBackColor = true;
+            // 
+            // activationSelector
+            // 
+            this.activationSelector.FormattingEnabled = true;
+            this.activationSelector.Items.AddRange(new object[] {
+            "BipolarSigmoidFunction",
+            "SigmoidFunction",
+            "ThresholdFunction"});
+            this.activationSelector.Location = new System.Drawing.Point(887, 127);
+            this.activationSelector.Name = "activationSelector";
+            this.activationSelector.Size = new System.Drawing.Size(221, 24);
+            this.activationSelector.TabIndex = 18;
+            // 
+            // algoritmSelector
+            // 
+            this.algoritmSelector.FormattingEnabled = true;
+            this.algoritmSelector.Items.AddRange(new object[] {
+            "BackPropagationLearning",
+            "DeltaRuleLearning",
+            "PerceptronLearning",
+            "ResilientBackpropagationLearning"});
+            this.algoritmSelector.Location = new System.Drawing.Point(887, 79);
+            this.algoritmSelector.Name = "algoritmSelector";
+            this.algoritmSelector.Size = new System.Drawing.Size(221, 24);
+            this.algoritmSelector.TabIndex = 17;
+            // 
+            // layerSelector
+            // 
+            this.layerSelector.FormattingEnabled = true;
+            this.layerSelector.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.layerSelector.Location = new System.Drawing.Point(678, 79);
+            this.layerSelector.Name = "layerSelector";
+            this.layerSelector.Size = new System.Drawing.Size(186, 24);
+            this.layerSelector.TabIndex = 16;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(53, 30);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(552, 169);
+            this.richTextBox1.TabIndex = 14;
+            this.richTextBox1.Text = "";
+            // 
+            // predictGet
+            // 
+            this.predictGet.Location = new System.Drawing.Point(416, 249);
+            this.predictGet.Name = "predictGet";
+            this.predictGet.Size = new System.Drawing.Size(160, 23);
+            this.predictGet.TabIndex = 15;
+            this.predictGet.Text = "Test NN";
+            this.predictGet.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(705, 60);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Количество слоёв";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(930, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 16);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Алгоритм обучения";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(929, 108);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(137, 16);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Функция активации";
+            // 
             // SoundAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 534);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SoundAnalyzer";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.SoundAnalyzer_Load);
@@ -311,6 +438,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumUpIdent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeRange)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeStart)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -336,6 +465,16 @@
         private System.Windows.Forms.NumericUpDown NumUpTimeRange;
         private System.Windows.Forms.NumericUpDown NumUpTimeStart;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button learnNetwork;
+        private System.Windows.Forms.Button openNetwork;
+        private System.Windows.Forms.ComboBox activationSelector;
+        private System.Windows.Forms.ComboBox algoritmSelector;
+        private System.Windows.Forms.ComboBox layerSelector;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button predictGet;
     }
 }
 
