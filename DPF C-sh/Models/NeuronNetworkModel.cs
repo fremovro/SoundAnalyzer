@@ -67,14 +67,14 @@ namespace DPF_C_sh.Models
         {
             if (network == null)
             {
-                //Установить сеть
+                //Выбор функции активации
                 if (Activation == "SigmoidFunction")
                     network = new ActivationNetwork(new SigmoidFunction(2), 2, Layers);
                 else if (Activation == "ThresholdFunction")
                     network = new ActivationNetwork(new ThresholdFunction(), 2, Layers);
                 else if (Activation == "BipolarSigmoidFunction")
                     network = new ActivationNetwork(new BipolarSigmoidFunction(2), 2, Layers);
-                //Метод обучения - это алгоритм обучения восприятию 
+                //Выбор метода обучения - это алгоритм обучения восприятию 
                 if (LearningAlg == "BackPropagationLearning")
                     teacher0 = new BackPropagationLearning(network);
                 else if (LearningAlg == "DeltaRuleLearning")
