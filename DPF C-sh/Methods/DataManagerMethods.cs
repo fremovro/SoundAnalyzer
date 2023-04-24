@@ -190,54 +190,69 @@ namespace DPF_C_sh.Methods
         }
         #endregion
         #region Методы для работы с нейросетью
-        //public void Learning(int[] Layers, string LearningAlg, string Activation)
-        //{
-        //    if (network == null)
-        //    {
-        //        //Установить сеть
-        //        if (Activation == "SigmoidFunction")
-        //            network = new ActivationNetwork(new SigmoidFunction(2), 2, Layers);
-        //        else if (Activation == "ThresholdFunction")
-        //            network = new ActivationNetwork(new ThresholdFunction(), 2, Layers);
-        //        else if (Activation == "BipolarSigmoidFunction")
-        //            network = new ActivationNetwork(new BipolarSigmoidFunction(2), 2, Layers);
-        //        //Метод обучения - это алгоритм обучения восприятию 
-        //        if (LearningAlg == "BackPropagationLearning")
-        //            teacher0 = new BackPropagationLearning(network);
-        //        else if (LearningAlg == "DeltaRuleLearning")
-        //            teacher1 = new DeltaRuleLearning(network);
-        //        else if (LearningAlg == "PerceptronLearning")
-        //            teacher2 = new PerceptronLearning(network);
-        //        else if (LearningAlg == "ResilientBackpropagationLearning")
-        //            teacher3 = new ResilientBackpropagationLearning(network);
+        public void NSampleGeneration(ref MainDataModel dataContext)
+        {
+            double[][] input = new double[dataContext.requencyRatios.ToArray().Length][];
+            double[][] output = new double[dataContext.requencyRatios.ToArray().Length][];
+            for (var i = 1; i <= 4; i++)
+                output[i - 1] = new double[] { 1 };
+            int index = 0;
+            foreach(var el in dataContext.requencyRatios)
+            {
+                input[index] = el.Value.ToArray();
+                index++;
+            }
+            dataContext.neuronNetworkModel = new NeuronNetworkModel(input, output);
+        }
 
-        //        //Определение абсолютная ошибка 
-        //        double error = 1.0;
-        //        Console.WriteLine();
-        //        Console.WriteLine("learning error  ===>  {0}", error);
+        public void NLearning(MainDataModel dataContext, int[] Layers, string LearningAlg, string Activation)
+        {
+            if (dataContext.neuronNetworkModel.network == null)
+            {
+                //Установить сеть
+                if (Activation == "SigmoidFunction")
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(2), 2, Layers);
+                else if (Activation == "ThresholdFunction")
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), 2, Layers);
+                else if (Activation == "BipolarSigmoidFunction")
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(2), 2, Layers);
+                //Метод обучения - это алгоритм обучения восприятию 
+                if (LearningAlg == "BackPropagationLearning")
+                    dataContext.neuronNetworkModel.teacher0 = new BackPropagationLearning(dataContext.neuronNetworkModel.network);
+                else if (LearningAlg == "DeltaRuleLearning")
+                    dataContext.neuronNetworkModel.teacher1 = new DeltaRuleLearning(dataContext.neuronNetworkModel.network);
+                else if (LearningAlg == "PerceptronLearning")
+                    dataContext.neuronNetworkModel.teacher2 = new PerceptronLearning(dataContext.neuronNetworkModel.network);
+                else if (LearningAlg == "ResilientBackpropagationLearning")
+                    dataContext.neuronNetworkModel.teacher3 = new ResilientBackpropagationLearning(dataContext.neuronNetworkModel.network);
 
-        //        //Количество итераций 
-        //        int iterations = 0;
-        //        Console.WriteLine();
-        //        while (error > 0.001)
-        //        {
-        //            if (LearningAlg == "BackPropagationLearning")
-        //                error = teacher0.RunEpoch(input, output);
-        //            else if (LearningAlg == "DeltaRuleLearning")
-        //                error = teacher1.RunEpoch(input, output);
-        //            else if (LearningAlg == "PerceptronLearning")
-        //                error = teacher2.RunEpoch(input, output);
-        //            else if (LearningAlg == "ResilientBackpropagationLearning")
-        //                error = teacher3.RunEpoch(input, output);
-        //            Console.WriteLine("learning error  ===>  {0}", error);
-        //            iterations++;
-        //        }
-        //        Console.WriteLine("iterations  ===>  {0}", iterations);
-        //        Console.WriteLine();
-        //        Console.WriteLine("sim:");
-        //        network.Save("learnedNetwork");
-        //    }
-        //}
+                //Определение абсолютная ошибка 
+                double error = 1.0;
+                Console.WriteLine();
+                Console.WriteLine("learning error  ===>  {0}", error);
+
+                //Количество итераций 
+                int iterations = 0;
+                Console.WriteLine();
+                while (error > 0.8)
+                {
+                    if (LearningAlg == "BackPropagationLearning")
+                        error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    else if (LearningAlg == "DeltaRuleLearning")
+                        error = dataContext.neuronNetworkModel.teacher1.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    else if (LearningAlg == "PerceptronLearning")
+                        error = dataContext.neuronNetworkModel.teacher2.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    else if (LearningAlg == "ResilientBackpropagationLearning")
+                        error = dataContext.neuronNetworkModel.teacher3.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    Console.WriteLine("learning error  ===>  {0}", error);
+                    iterations++;
+                }
+                Console.WriteLine("iterations  ===>  {0}", iterations);
+                Console.WriteLine();
+                Console.WriteLine("sim:");
+                dataContext.neuronNetworkModel.network.Save("learnedNetwork");
+            }
+        }
 
         //public string GetPredict(double[][] PredictData)
         //{

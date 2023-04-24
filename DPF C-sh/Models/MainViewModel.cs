@@ -8,6 +8,7 @@ namespace DPF_C_sh.Models
         public Dictionary<int, WavFileModel> wavFiles { get; set; }
         public Dictionary<int, ResultDpfModel> resultDpf { get; set; }
         public Dictionary<int, List<double>> requencyRatios { get; set; }
+        public NeuronNetworkModel neuronNetworkModel { get; set; }
         public Chart fileDataChart { get; set; }
         public Chart dpfDataChart { get; set; }
 

@@ -66,3 +66,11 @@ C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.xml
 C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Genetic.xml
 C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Math.xml
 C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Neuro.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Genetic.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Math.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Neuro.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Genetic.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Math.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Neuro.xml

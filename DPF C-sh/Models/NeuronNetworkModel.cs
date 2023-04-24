@@ -13,31 +13,31 @@ namespace DPF_C_sh.Models
         /// <summary>
         /// Массив входных значений для обчующей/тестовой выборки
         /// </summary>
-        double[][] input;
+        public double[][] input;
         /// <summary>
         /// Массив выходных значений для обчующей/тестовой выборки
         /// </summary>
-        double[][] output;
+        public double[][] output;
         /// <summary>
         /// Файл нейросети
         /// </summary>
-        ActivationNetwork network;
+        public ActivationNetwork network;
         /// <summary>
         /// Функция обучения обратного распространения
         /// </summary>
-        BackPropagationLearning teacher0;
+        public BackPropagationLearning teacher0;
         /// <summary>
         /// Функция обучения дельта-рул
         /// </summary>
-        DeltaRuleLearning teacher1;
+        public DeltaRuleLearning teacher1;
         /// <summary>
         /// Функция обучения простейшего персептрона (только для сети с 1 слоем)
         /// </summary>
-        PerceptronLearning teacher2;
+        public PerceptronLearning teacher2;
         /// <summary>
         /// Функция обучения устойчивоого обратноого распространения
         /// </summary>
-        ResilientBackpropagationLearning teacher3;
+        public ResilientBackpropagationLearning teacher3;
 
         /// <summary>
         /// Конструктор сети для обучения/тестирования

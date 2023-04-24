@@ -61,6 +61,8 @@ namespace DPF_C_sh
             _dataManagerMethods.CalculateRequencyRatios(ref _dataContext, NumUpMaxCount, NumUpIdent);
 
             _accessoryMethods.PrintRequencyRatiosByKey(_dataContext, ChosenRequency, ChosenFileName);
+
+            _dataManagerMethods.NSampleGeneration(ref _dataContext);
         }
 
         private void LeftChangeFile_Click(object sender, EventArgs e)
@@ -73,6 +75,11 @@ namespace DPF_C_sh
         {
             _accessoryMethods.ChoseNextFile(ref _dataContext, NumUpTimeStart, NumUpSmooth, FileDataPanel, DpfDataPanel,
                     ChosenFileName, ChosenRequency, _dataContext.wavFiles.First().Key, false);
+        }
+
+        private void learnNetwork_Click(object sender, EventArgs e)
+        {
+            _dataManagerMethods.NLearning(_dataContext, new int[3] { 3, 4, 1 }, "BackPropagationLearning", "SigmoidFunction");
         }
     }
 }
