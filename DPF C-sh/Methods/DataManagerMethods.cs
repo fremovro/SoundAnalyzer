@@ -14,7 +14,8 @@ namespace DPF_C_sh.Methods
     internal class DataManagerMethods
     {
         public DataManagerMethods() { }
-        #region Методы для работы для метода отношения частот
+
+        #region Методы для нахождения отношений частот
         /// <summary>
         /// Считывание файла (формат .wav)
         /// </summary>
@@ -85,7 +86,8 @@ namespace DPF_C_sh.Methods
                     fileStream.Close();
 
                     dataContext.wavFiles.Add(index, 
-                        new WavFileModel(file.Split('\\')[file.Split('\\').Length - 1].Split('.')[0], 
+                        new WavFileModel(file.Split('\\')[file.Split('\\').Length - 1].Split('.')[0].Split('-')[0],
+                        Convert.ToInt32(file.Split('\\')[file.Split('\\').Length - 1].Split('.')[0].Split('-')[1]),
                         sampleRate, blockAlign, bitsPerSample, tempSoundData.ToArray()));
 
                     index++;
@@ -189,13 +191,16 @@ namespace DPF_C_sh.Methods
             return res;
         }
         #endregion
+
         #region Методы для работы с нейросетью
         public void NSampleGeneration(ref MainDataModel dataContext)
         {
             double[][] input = new double[dataContext.requencyRatios.ToArray().Length][];
             double[][] output = new double[dataContext.requencyRatios.ToArray().Length][];
-            for (var i = 1; i <= 4; i++)
-                output[i - 1] = new double[] { 1 };
+
+            foreach(var el in dataContext.wavFiles)
+                output[el.Key] = new double[] { el.Value.emotionNum };
+
             int index = 0;
             foreach(var el in dataContext.requencyRatios)
             {
