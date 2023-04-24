@@ -211,11 +211,11 @@ namespace DPF_C_sh.Methods
             {
                 //Установить сеть
                 if (Activation == "SigmoidFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(2), 2, Layers);
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(2), Layers[0], Layers);
                 else if (Activation == "ThresholdFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), 2, Layers);
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), Layers[0], Layers);
                 else if (Activation == "BipolarSigmoidFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(2), 2, Layers);
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(2), Layers[0], Layers);
                 //Метод обучения - это алгоритм обучения восприятию 
                 if (LearningAlg == "BackPropagationLearning")
                     dataContext.neuronNetworkModel.teacher0 = new BackPropagationLearning(dataContext.neuronNetworkModel.network);
@@ -234,7 +234,7 @@ namespace DPF_C_sh.Methods
                 //Количество итераций 
                 int iterations = 0;
                 Console.WriteLine();
-                while (error > 0.8)
+                while (error > 0.01)
                 {
                     if (LearningAlg == "BackPropagationLearning")
                         error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
