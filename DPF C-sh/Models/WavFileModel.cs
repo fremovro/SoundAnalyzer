@@ -12,6 +12,8 @@ namespace DPF_C_sh.Models
         #region Заголовок Wav-файла
         public string fileName;
 
+        public int emotionNum;
+
         /// <summary>
         /// Частота дискретизации
         /// </summary>
@@ -31,9 +33,10 @@ namespace DPF_C_sh.Models
         public double[] soundData;
         #endregion
 
-        public WavFileModel(string fileName, int sampleRate, int blockAlign, int bitsPerSample, double[] soundData)
+        public WavFileModel(string fileName, int emotionNum, int sampleRate, int blockAlign, int bitsPerSample, double[] soundData)
         {
             this.fileName = fileName;
+            this.emotionNum = emotionNum;
             this.sampleRate = sampleRate;
             this.blockAlign = blockAlign;
             this.bitsPerSample = bitsPerSample;

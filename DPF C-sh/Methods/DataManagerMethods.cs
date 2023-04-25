@@ -1,4 +1,6 @@
-﻿using DPF_C_sh.Models;
+﻿using AForge.Neuro.Learning;
+using AForge.Neuro;
+using DPF_C_sh.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace DPF_C_sh.Methods
 {
@@ -13,6 +16,7 @@ namespace DPF_C_sh.Methods
     {
         public DataManagerMethods() { }
 
+        #region Методы для нахождения отношений частот
         /// <summary>
         /// Считывание файла (формат .wav)
         /// </summary>
@@ -83,7 +87,8 @@ namespace DPF_C_sh.Methods
                     fileStream.Close();
 
                     dataContext.wavFiles.Add(index, 
-                        new WavFileModel(file.Split('\\')[file.Split('\\').Length - 1].Split('.')[0], 
+                        new WavFileModel(file.Split('\\')[file.Split('\\').Length - 1].Split('.')[0].Split('-')[0],
+                        Convert.ToInt32(file.Split('\\')[file.Split('\\').Length - 1].Split('.')[0].Split('-')[1]),
                         sampleRate, blockAlign, bitsPerSample, tempSoundData.ToArray()));
 
                     index++;
@@ -186,5 +191,90 @@ namespace DPF_C_sh.Methods
 
             return res;
         }
+        #endregion
+
+        #region Методы для работы с нейросетью
+        public void NSampleGeneration(ref MainDataModel dataContext)
+        {
+            double[][] input = new double[dataContext.requencyRatios.ToArray().Length][];
+            double[][] output = new double[dataContext.requencyRatios.ToArray().Length][];
+
+            foreach(var el in dataContext.wavFiles)
+                output[el.Key] = new double[] { el.Value.emotionNum };
+
+            int index = 0;
+            foreach(var el in dataContext.requencyRatios)
+            {
+                input[index] = el.Value.ToArray();
+                index++;
+            }
+            dataContext.neuronNetworkModel = new NeuronNetworkModel(input, output);
+        }
+
+        public void NLearning(MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation)
+        {
+            int[] Layers = new int[dataContext.layersList.Count()];
+            for (int i = 0; i < dataContext.layersList.Count(); i++)
+            {
+                Layers[i] = (int)dataContext.layersList[i].Value;
+            }
+
+            if (dataContext.neuronNetworkModel.network == null)
+            {
+                //Установить сеть
+                if (Activation.Text == "SigmoidFunction")
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(2), Layers[0], Layers);
+                else if (Activation.Text == "ThresholdFunction")
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), Layers[0], Layers);
+                else if (Activation.Text == "BipolarSigmoidFunction")
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(2), Layers[0], Layers);
+                //Метод обучения - это алгоритм обучения восприятию 
+                if (LearningAlg.Text == "BackPropagationLearning")
+                    dataContext.neuronNetworkModel.teacher0 = new BackPropagationLearning(dataContext.neuronNetworkModel.network);
+                else if (LearningAlg.Text == "DeltaRuleLearning")
+                    dataContext.neuronNetworkModel.teacher1 = new DeltaRuleLearning(dataContext.neuronNetworkModel.network);
+                else if (LearningAlg.Text == "PerceptronLearning")
+                    dataContext.neuronNetworkModel.teacher2 = new PerceptronLearning(dataContext.neuronNetworkModel.network);
+                else if (LearningAlg.Text == "ResilientBackpropagationLearning")
+                    dataContext.neuronNetworkModel.teacher3 = new ResilientBackpropagationLearning(dataContext.neuronNetworkModel.network);
+
+                //Определение абсолютная ошибка 
+                double error = 1.0;
+                Console.WriteLine();
+                Console.WriteLine("learning error  ===>  {0}", error);
+
+                //Количество итераций 
+                int iterations = 0;
+                Console.WriteLine();
+                while (error > 0.01)
+                {
+                    if (LearningAlg.Text == "BackPropagationLearning")
+                        error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    else if (LearningAlg.Text == "DeltaRuleLearning")
+                        error = dataContext.neuronNetworkModel.teacher1.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    else if (LearningAlg.Text == "PerceptronLearning")
+                        error = dataContext.neuronNetworkModel.teacher2.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    else if (LearningAlg.Text == "ResilientBackpropagationLearning")
+                        error = dataContext.neuronNetworkModel.teacher3.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    Console.WriteLine("learning error  ===>  {0}", error);
+                    iterations++;
+                }
+                Console.WriteLine("iterations  ===>  {0}", iterations);
+                Console.WriteLine();
+                Console.WriteLine("sim:");
+                dataContext.neuronNetworkModel.network.Save("learnedNetwork");
+            }
+        }
+
+        //public string GetPredict(double[][] PredictData)
+        //{
+        //    string res = "";
+        //    for (int i = 0; i < PredictData.Length; i++)
+        //    {
+        //        res += String.Format("sim{0}:  ===>  {1}\n", i, network.Compute(PredictData[i])[0]);
+        //    }
+        //    return res;
+        //}
+        #endregion
     }
 }

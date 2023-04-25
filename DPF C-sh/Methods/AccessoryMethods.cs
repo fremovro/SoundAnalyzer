@@ -2,6 +2,10 @@
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
 using DPF_C_sh.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Drawing;
+using ComboBox = System.Windows.Forms.ComboBox;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace DPF_C_sh.Methods
 {
@@ -208,6 +212,32 @@ namespace DPF_C_sh.Methods
             //        resultDataChart.Series["p" + i.ToString()].Points.AddXY(res[i].Frecuency, 10 * Math.Log10(res[i].Amplitude / dataContext.maxDpfAmplitude));
             //    }
             //}
+        }
+
+        public void NLayerGenerator(ref MainDataModel dataContext, ComboBox layerCount, TabPage tabPage)
+        {
+            for (int i = dataContext.layersList.Count() - 1; dataContext.layersList.Count() != int.Parse(layerCount.SelectedItem.ToString()) && i >= 0; i--)
+            {
+                tabPage.Controls.Remove(dataContext.layersList[i]);
+                dataContext.layersList.Remove(dataContext.layersList[i]);
+            }
+            for (int i = dataContext.layersList.Count(); i < int.Parse(layerCount.SelectedItem.ToString()); i++)
+            {
+                NumericUpDown newNumericUpDown = new NumericUpDown();
+                NumericUpDown lastOld = dataContext.layersList.LastOrDefault();
+                if (lastOld == null)
+                {
+                    newNumericUpDown.Location = new Point(678, 109);
+                    newNumericUpDown.Size = new Size(186, 24);
+                }
+                else
+                {
+                    newNumericUpDown.Location = new Point(lastOld.Location.X, lastOld.Location.Y + 30);
+                    newNumericUpDown.Size = new Size(186, 24);
+                }
+                dataContext.layersList.Add(newNumericUpDown);
+                tabPage.Controls.Add(newNumericUpDown);
+            }
         }
     }
 }
