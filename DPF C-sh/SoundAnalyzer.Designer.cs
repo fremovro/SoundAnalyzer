@@ -405,6 +405,7 @@
             this.layerSelector.Name = "layerSelector";
             this.layerSelector.Size = new System.Drawing.Size(209, 29);
             this.layerSelector.TabIndex = 16;
+            this.layerSelector.SelectedIndexChanged += new System.EventHandler(this.layerSelector_SelectedIndexChanged);
             // 
             // richTextBox1
             // 

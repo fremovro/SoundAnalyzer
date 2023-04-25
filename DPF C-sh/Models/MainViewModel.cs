@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DPF_C_sh.Models
@@ -11,7 +12,7 @@ namespace DPF_C_sh.Models
         public NeuronNetworkModel neuronNetworkModel { get; set; }
         public Chart fileDataChart { get; set; }
         public Chart dpfDataChart { get; set; }
-
+        public List<NumericUpDown> layersList { get; set; }
         public MainDataModel() 
         {
             fileDataChart = null;
@@ -19,6 +20,7 @@ namespace DPF_C_sh.Models
             wavFiles = new Dictionary<int, WavFileModel>();
             resultDpf = new Dictionary<int, ResultDpfModel>();
             requencyRatios = new Dictionary<int, List<double>>();
+            layersList = new List<NumericUpDown>();
         }
     }
 }

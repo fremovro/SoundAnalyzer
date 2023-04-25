@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace DPF_C_sh.Methods
 {
@@ -210,25 +211,31 @@ namespace DPF_C_sh.Methods
             dataContext.neuronNetworkModel = new NeuronNetworkModel(input, output);
         }
 
-        public void NLearning(MainDataModel dataContext, int[] Layers, string LearningAlg, string Activation)
+        public void NLearning(MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation)
         {
+            int[] Layers = new int[dataContext.layersList.Count()];
+            for (int i = 0; i < dataContext.layersList.Count(); i++)
+            {
+                Layers[i] = (int)dataContext.layersList[i].Value;
+            }
+
             if (dataContext.neuronNetworkModel.network == null)
             {
                 //Установить сеть
-                if (Activation == "SigmoidFunction")
+                if (Activation.Text == "SigmoidFunction")
                     dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(2), Layers[0], Layers);
-                else if (Activation == "ThresholdFunction")
+                else if (Activation.Text == "ThresholdFunction")
                     dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), Layers[0], Layers);
-                else if (Activation == "BipolarSigmoidFunction")
+                else if (Activation.Text == "BipolarSigmoidFunction")
                     dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(2), Layers[0], Layers);
                 //Метод обучения - это алгоритм обучения восприятию 
-                if (LearningAlg == "BackPropagationLearning")
+                if (LearningAlg.Text == "BackPropagationLearning")
                     dataContext.neuronNetworkModel.teacher0 = new BackPropagationLearning(dataContext.neuronNetworkModel.network);
-                else if (LearningAlg == "DeltaRuleLearning")
+                else if (LearningAlg.Text == "DeltaRuleLearning")
                     dataContext.neuronNetworkModel.teacher1 = new DeltaRuleLearning(dataContext.neuronNetworkModel.network);
-                else if (LearningAlg == "PerceptronLearning")
+                else if (LearningAlg.Text == "PerceptronLearning")
                     dataContext.neuronNetworkModel.teacher2 = new PerceptronLearning(dataContext.neuronNetworkModel.network);
-                else if (LearningAlg == "ResilientBackpropagationLearning")
+                else if (LearningAlg.Text == "ResilientBackpropagationLearning")
                     dataContext.neuronNetworkModel.teacher3 = new ResilientBackpropagationLearning(dataContext.neuronNetworkModel.network);
 
                 //Определение абсолютная ошибка 
@@ -241,13 +248,13 @@ namespace DPF_C_sh.Methods
                 Console.WriteLine();
                 while (error > 0.01)
                 {
-                    if (LearningAlg == "BackPropagationLearning")
+                    if (LearningAlg.Text == "BackPropagationLearning")
                         error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
-                    else if (LearningAlg == "DeltaRuleLearning")
+                    else if (LearningAlg.Text == "DeltaRuleLearning")
                         error = dataContext.neuronNetworkModel.teacher1.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
-                    else if (LearningAlg == "PerceptronLearning")
+                    else if (LearningAlg.Text == "PerceptronLearning")
                         error = dataContext.neuronNetworkModel.teacher2.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
-                    else if (LearningAlg == "ResilientBackpropagationLearning")
+                    else if (LearningAlg.Text == "ResilientBackpropagationLearning")
                         error = dataContext.neuronNetworkModel.teacher3.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
                     Console.WriteLine("learning error  ===>  {0}", error);
                     iterations++;

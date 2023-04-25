@@ -79,7 +79,12 @@ namespace DPF_C_sh
 
         private void learnNetwork_Click(object sender, EventArgs e)
         {
-            _dataManagerMethods.NLearning(_dataContext, new int[3] { 3, 4, 1 }, "BackPropagationLearning", "SigmoidFunction");
+            _dataManagerMethods.NLearning(_dataContext, algoritmSelector, activationSelector);
+        }
+
+        private void layerSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _accessoryMethods.NLayerGenerator(ref _dataContext, layerSelector, tabPage2);
         }
     }
 }
