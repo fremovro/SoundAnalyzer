@@ -6,6 +6,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Drawing;
 using ComboBox = System.Windows.Forms.ComboBox;
 using TextBox = System.Windows.Forms.TextBox;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DPF_C_sh.Methods
 {
@@ -237,6 +238,14 @@ namespace DPF_C_sh.Methods
                 }
                 dataContext.layersList.Add(newNumericUpDown);
                 tabPage.Controls.Add(newNumericUpDown);
+            }
+        }
+
+        public void NOpenLearnedFile(ref MainDataModel dataContext, OpenFileDialog openFileDialog)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                dataContext.neuronNetworkModel = new NeuronNetworkModel(openFileDialog.FileName);
             }
         }
     }

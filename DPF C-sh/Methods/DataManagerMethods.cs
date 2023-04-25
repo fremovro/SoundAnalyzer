@@ -211,7 +211,7 @@ namespace DPF_C_sh.Methods
             dataContext.neuronNetworkModel = new NeuronNetworkModel(input, output);
         }
 
-        public void NLearning(MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation)
+        public void NLearning(ref MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation)
         {
             int[] Layers = new int[dataContext.layersList.Count()];
             for (int i = 0; i < dataContext.layersList.Count(); i++)
