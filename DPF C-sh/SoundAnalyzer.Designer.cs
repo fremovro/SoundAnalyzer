@@ -358,6 +358,7 @@
             this.openNetwork.TabIndex = 19;
             this.openNetwork.Text = "Открыть файл готовой сети";
             this.openNetwork.UseVisualStyleBackColor = true;
+            this.openNetwork.Click += new System.EventHandler(this.openNetwork_Click);
             // 
             // activationSelector
             // 
