@@ -76,10 +76,9 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(3, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1286, 696);
+            this.tabControl1.Size = new System.Drawing.Size(1143, 530);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -99,20 +98,20 @@
             this.tabPage1.Controls.Add(this.CalculateRequencyRatios);
             this.tabPage1.Controls.Add(this.NumUpTimeRange);
             this.tabPage1.Controls.Add(this.NumUpTimeStart);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1278, 662);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(1135, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DPF";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // LeftChangeFile
             // 
-            this.LeftChangeFile.Location = new System.Drawing.Point(14, 139);
+            this.LeftChangeFile.Location = new System.Drawing.Point(12, 106);
+            this.LeftChangeFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LeftChangeFile.Name = "LeftChangeFile";
-            this.LeftChangeFile.Size = new System.Drawing.Size(118, 47);
+            this.LeftChangeFile.Size = new System.Drawing.Size(105, 36);
             this.LeftChangeFile.TabIndex = 39;
             this.LeftChangeFile.Text = "<\r\n";
             this.LeftChangeFile.UseVisualStyleBackColor = true;
@@ -120,10 +119,10 @@
             // 
             // OpenFilePart
             // 
-            this.OpenFilePart.Location = new System.Drawing.Point(14, 5);
-            this.OpenFilePart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.OpenFilePart.Location = new System.Drawing.Point(12, 4);
+            this.OpenFilePart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.OpenFilePart.Name = "OpenFilePart";
-            this.OpenFilePart.Size = new System.Drawing.Size(165, 35);
+            this.OpenFilePart.Size = new System.Drawing.Size(147, 27);
             this.OpenFilePart.TabIndex = 27;
             this.OpenFilePart.Text = "Open file part";
             this.OpenFilePart.UseVisualStyleBackColor = true;
@@ -131,16 +130,18 @@
             // 
             // ChosenFileName
             // 
-            this.ChosenFileName.Location = new System.Drawing.Point(15, 97);
+            this.ChosenFileName.Location = new System.Drawing.Point(13, 74);
+            this.ChosenFileName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChosenFileName.Name = "ChosenFileName";
-            this.ChosenFileName.Size = new System.Drawing.Size(247, 29);
+            this.ChosenFileName.Size = new System.Drawing.Size(220, 22);
             this.ChosenFileName.TabIndex = 41;
             // 
             // RightChangeFile
             // 
-            this.RightChangeFile.Location = new System.Drawing.Point(144, 139);
+            this.RightChangeFile.Location = new System.Drawing.Point(128, 106);
+            this.RightChangeFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RightChangeFile.Name = "RightChangeFile";
-            this.RightChangeFile.Size = new System.Drawing.Size(118, 47);
+            this.RightChangeFile.Size = new System.Drawing.Size(105, 36);
             this.RightChangeFile.TabIndex = 40;
             this.RightChangeFile.Text = ">";
             this.RightChangeFile.UseVisualStyleBackColor = true;
@@ -148,10 +149,10 @@
             // 
             // DPF
             // 
-            this.DPF.Location = new System.Drawing.Point(14, 209);
-            this.DPF.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DPF.Location = new System.Drawing.Point(12, 159);
+            this.DPF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DPF.Name = "DPF";
-            this.DPF.Size = new System.Drawing.Size(251, 47);
+            this.DPF.Size = new System.Drawing.Size(223, 36);
             this.DPF.TabIndex = 28;
             this.DPF.Text = "DPF";
             this.DPF.UseVisualStyleBackColor = true;
@@ -159,17 +160,18 @@
             // 
             // ChosenRequency
             // 
-            this.ChosenRequency.Location = new System.Drawing.Point(14, 402);
-            this.ChosenRequency.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ChosenRequency.Location = new System.Drawing.Point(12, 306);
+            this.ChosenRequency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ChosenRequency.Multiline = true;
             this.ChosenRequency.Name = "ChosenRequency";
             this.ChosenRequency.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ChosenRequency.Size = new System.Drawing.Size(250, 249);
+            this.ChosenRequency.Size = new System.Drawing.Size(223, 191);
             this.ChosenRequency.TabIndex = 38;
             // 
             // NumUpMaxCount
             // 
-            this.NumUpMaxCount.Location = new System.Drawing.Point(14, 356);
+            this.NumUpMaxCount.Location = new System.Drawing.Point(12, 271);
+            this.NumUpMaxCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumUpMaxCount.Maximum = new decimal(new int[] {
             10,
             0,
@@ -181,7 +183,7 @@
             0,
             0});
             this.NumUpMaxCount.Name = "NumUpMaxCount";
-            this.NumUpMaxCount.Size = new System.Drawing.Size(118, 29);
+            this.NumUpMaxCount.Size = new System.Drawing.Size(105, 22);
             this.NumUpMaxCount.TabIndex = 37;
             this.NumUpMaxCount.Value = new decimal(new int[] {
             3,
@@ -192,23 +194,25 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(189, 10);
+            this.checkBox1.Location = new System.Drawing.Point(168, 8);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(85, 25);
+            this.checkBox1.Size = new System.Drawing.Size(65, 20);
             this.checkBox1.TabIndex = 36;
             this.checkBox1.Text = "db (!!!)";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // NumUpSmooth
             // 
-            this.NumUpSmooth.Location = new System.Drawing.Point(14, 264);
+            this.NumUpSmooth.Location = new System.Drawing.Point(12, 201);
+            this.NumUpSmooth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumUpSmooth.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.NumUpSmooth.Name = "NumUpSmooth";
-            this.NumUpSmooth.Size = new System.Drawing.Size(249, 29);
+            this.NumUpSmooth.Size = new System.Drawing.Size(221, 22);
             this.NumUpSmooth.TabIndex = 35;
             this.NumUpSmooth.Value = new decimal(new int[] {
             500,
@@ -218,32 +222,32 @@
             // 
             // DpfDataPanel
             // 
-            this.DpfDataPanel.Location = new System.Drawing.Point(278, 209);
-            this.DpfDataPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DpfDataPanel.Location = new System.Drawing.Point(247, 159);
+            this.DpfDataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DpfDataPanel.Name = "DpfDataPanel";
-            this.DpfDataPanel.Size = new System.Drawing.Size(994, 444);
+            this.DpfDataPanel.Size = new System.Drawing.Size(884, 338);
             this.DpfDataPanel.TabIndex = 34;
             // 
             // FileDataPanel
             // 
-            this.FileDataPanel.Location = new System.Drawing.Point(278, 5);
-            this.FileDataPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.FileDataPanel.Location = new System.Drawing.Point(247, 4);
+            this.FileDataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FileDataPanel.Name = "FileDataPanel";
-            this.FileDataPanel.Size = new System.Drawing.Size(994, 180);
+            this.FileDataPanel.Size = new System.Drawing.Size(884, 137);
             this.FileDataPanel.TabIndex = 33;
             // 
             // NumUpIdent
             // 
             this.NumUpIdent.DecimalPlaces = 2;
-            this.NumUpIdent.Location = new System.Drawing.Point(144, 356);
-            this.NumUpIdent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NumUpIdent.Location = new System.Drawing.Point(128, 271);
+            this.NumUpIdent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumUpIdent.Maximum = new decimal(new int[] {
             1500,
             0,
             0,
             0});
             this.NumUpIdent.Name = "NumUpIdent";
-            this.NumUpIdent.Size = new System.Drawing.Size(118, 29);
+            this.NumUpIdent.Size = new System.Drawing.Size(105, 22);
             this.NumUpIdent.TabIndex = 32;
             this.NumUpIdent.Value = new decimal(new int[] {
             100,
@@ -253,10 +257,10 @@
             // 
             // CalculateRequencyRatios
             // 
-            this.CalculateRequencyRatios.Location = new System.Drawing.Point(14, 301);
-            this.CalculateRequencyRatios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CalculateRequencyRatios.Location = new System.Drawing.Point(12, 229);
+            this.CalculateRequencyRatios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CalculateRequencyRatios.Name = "CalculateRequencyRatios";
-            this.CalculateRequencyRatios.Size = new System.Drawing.Size(251, 47);
+            this.CalculateRequencyRatios.Size = new System.Drawing.Size(223, 36);
             this.CalculateRequencyRatios.TabIndex = 31;
             this.CalculateRequencyRatios.Text = "Result";
             this.CalculateRequencyRatios.UseVisualStyleBackColor = true;
@@ -265,10 +269,10 @@
             // NumUpTimeRange
             // 
             this.NumUpTimeRange.DecimalPlaces = 3;
-            this.NumUpTimeRange.Location = new System.Drawing.Point(144, 50);
-            this.NumUpTimeRange.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NumUpTimeRange.Location = new System.Drawing.Point(128, 38);
+            this.NumUpTimeRange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumUpTimeRange.Name = "NumUpTimeRange";
-            this.NumUpTimeRange.Size = new System.Drawing.Size(118, 29);
+            this.NumUpTimeRange.Size = new System.Drawing.Size(105, 22);
             this.NumUpTimeRange.TabIndex = 30;
             this.NumUpTimeRange.Value = new decimal(new int[] {
             1,
@@ -279,10 +283,10 @@
             // NumUpTimeStart
             // 
             this.NumUpTimeStart.DecimalPlaces = 3;
-            this.NumUpTimeStart.Location = new System.Drawing.Point(14, 50);
-            this.NumUpTimeStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NumUpTimeStart.Location = new System.Drawing.Point(12, 38);
+            this.NumUpTimeStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NumUpTimeStart.Name = "NumUpTimeStart";
-            this.NumUpTimeStart.Size = new System.Drawing.Size(118, 29);
+            this.NumUpTimeStart.Size = new System.Drawing.Size(105, 22);
             this.NumUpTimeStart.TabIndex = 29;
             this.NumUpTimeStart.Value = new decimal(new int[] {
             1,
@@ -302,11 +306,10 @@
             this.tabPage2.Controls.Add(this.layerSelector);
             this.tabPage2.Controls.Add(this.richTextBox1);
             this.tabPage2.Controls.Add(this.predictGet);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(1278, 662);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(1135, 501);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NeuronNetwork";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -314,36 +317,35 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1045, 142);
+            this.label3.Location = new System.Drawing.Point(929, 108);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 21);
+            this.label3.Size = new System.Drawing.Size(137, 16);
             this.label3.TabIndex = 23;
             this.label3.Text = "Функция активации";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1046, 79);
+            this.label2.Location = new System.Drawing.Point(930, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 21);
+            this.label2.Size = new System.Drawing.Size(136, 16);
             this.label2.TabIndex = 22;
             this.label2.Text = "Алгоритм обучения";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(793, 79);
+            this.label1.Location = new System.Drawing.Point(705, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 21);
+            this.label1.Size = new System.Drawing.Size(127, 16);
             this.label1.TabIndex = 21;
             this.label1.Text = "Количество слоёв";
             // 
             // learnNetwork
             // 
-            this.learnNetwork.Location = new System.Drawing.Point(118, 327);
-            this.learnNetwork.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.learnNetwork.Location = new System.Drawing.Point(105, 249);
             this.learnNetwork.Name = "learnNetwork";
-            this.learnNetwork.Size = new System.Drawing.Size(160, 30);
+            this.learnNetwork.Size = new System.Drawing.Size(142, 23);
             this.learnNetwork.TabIndex = 20;
             this.learnNetwork.Text = "Обучить";
             this.learnNetwork.UseVisualStyleBackColor = true;
@@ -351,10 +353,9 @@
             // 
             // openNetwork
             // 
-            this.openNetwork.Location = new System.Drawing.Point(1036, 231);
-            this.openNetwork.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.openNetwork.Location = new System.Drawing.Point(921, 176);
             this.openNetwork.Name = "openNetwork";
-            this.openNetwork.Size = new System.Drawing.Size(180, 70);
+            this.openNetwork.Size = new System.Drawing.Size(160, 53);
             this.openNetwork.TabIndex = 19;
             this.openNetwork.Text = "Открыть файл готовой сети";
             this.openNetwork.UseVisualStyleBackColor = true;
@@ -367,10 +368,9 @@
             "BipolarSigmoidFunction",
             "SigmoidFunction",
             "ThresholdFunction"});
-            this.activationSelector.Location = new System.Drawing.Point(998, 167);
-            this.activationSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.activationSelector.Location = new System.Drawing.Point(887, 127);
             this.activationSelector.Name = "activationSelector";
-            this.activationSelector.Size = new System.Drawing.Size(248, 29);
+            this.activationSelector.Size = new System.Drawing.Size(221, 24);
             this.activationSelector.TabIndex = 18;
             // 
             // algoritmSelector
@@ -381,10 +381,9 @@
             "DeltaRuleLearning",
             "PerceptronLearning",
             "ResilientBackpropagationLearning"});
-            this.algoritmSelector.Location = new System.Drawing.Point(998, 104);
-            this.algoritmSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.algoritmSelector.Location = new System.Drawing.Point(887, 79);
             this.algoritmSelector.Name = "algoritmSelector";
-            this.algoritmSelector.Size = new System.Drawing.Size(248, 29);
+            this.algoritmSelector.Size = new System.Drawing.Size(221, 24);
             this.algoritmSelector.TabIndex = 17;
             // 
             // layerSelector
@@ -401,39 +400,36 @@
             "8",
             "9",
             "10"});
-            this.layerSelector.Location = new System.Drawing.Point(763, 104);
-            this.layerSelector.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.layerSelector.Location = new System.Drawing.Point(678, 79);
             this.layerSelector.Name = "layerSelector";
-            this.layerSelector.Size = new System.Drawing.Size(209, 29);
+            this.layerSelector.Size = new System.Drawing.Size(186, 24);
             this.layerSelector.TabIndex = 16;
             this.layerSelector.SelectedIndexChanged += new System.EventHandler(this.layerSelector_SelectedIndexChanged);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(60, 39);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.richTextBox1.Location = new System.Drawing.Point(53, 30);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(620, 221);
+            this.richTextBox1.Size = new System.Drawing.Size(552, 169);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
             // predictGet
             // 
-            this.predictGet.Location = new System.Drawing.Point(468, 327);
-            this.predictGet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.predictGet.Location = new System.Drawing.Point(416, 249);
             this.predictGet.Name = "predictGet";
-            this.predictGet.Size = new System.Drawing.Size(180, 30);
+            this.predictGet.Size = new System.Drawing.Size(160, 23);
             this.predictGet.TabIndex = 15;
             this.predictGet.Text = "Test NN";
             this.predictGet.UseVisualStyleBackColor = true;
             // 
             // SoundAnalyzer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1293, 701);
+            this.ClientSize = new System.Drawing.Size(1149, 534);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SoundAnalyzer";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.SoundAnalyzer_Load);
