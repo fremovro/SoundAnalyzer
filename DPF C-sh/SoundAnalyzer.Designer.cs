@@ -56,7 +56,12 @@
             this.algoritmSelector = new System.Windows.Forms.ComboBox();
             this.layerSelector = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.predictGet = new System.Windows.Forms.Button();
+            this.resultText = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpMaxCount)).BeginInit();
@@ -65,6 +70,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeStart)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenFileDialog
@@ -75,6 +84,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(3, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -100,7 +110,7 @@
             this.tabPage1.Controls.Add(this.NumUpTimeStart);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1135, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DPF";
@@ -120,7 +130,7 @@
             // OpenFilePart
             // 
             this.OpenFilePart.Location = new System.Drawing.Point(12, 4);
-            this.OpenFilePart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OpenFilePart.Margin = new System.Windows.Forms.Padding(4);
             this.OpenFilePart.Name = "OpenFilePart";
             this.OpenFilePart.Size = new System.Drawing.Size(147, 27);
             this.OpenFilePart.TabIndex = 27;
@@ -150,7 +160,7 @@
             // DPF
             // 
             this.DPF.Location = new System.Drawing.Point(12, 159);
-            this.DPF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DPF.Margin = new System.Windows.Forms.Padding(4);
             this.DPF.Name = "DPF";
             this.DPF.Size = new System.Drawing.Size(223, 36);
             this.DPF.TabIndex = 28;
@@ -161,7 +171,7 @@
             // ChosenRequency
             // 
             this.ChosenRequency.Location = new System.Drawing.Point(12, 306);
-            this.ChosenRequency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChosenRequency.Margin = new System.Windows.Forms.Padding(4);
             this.ChosenRequency.Multiline = true;
             this.ChosenRequency.Name = "ChosenRequency";
             this.ChosenRequency.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -223,7 +233,7 @@
             // DpfDataPanel
             // 
             this.DpfDataPanel.Location = new System.Drawing.Point(247, 159);
-            this.DpfDataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DpfDataPanel.Margin = new System.Windows.Forms.Padding(4);
             this.DpfDataPanel.Name = "DpfDataPanel";
             this.DpfDataPanel.Size = new System.Drawing.Size(884, 338);
             this.DpfDataPanel.TabIndex = 34;
@@ -231,7 +241,7 @@
             // FileDataPanel
             // 
             this.FileDataPanel.Location = new System.Drawing.Point(247, 4);
-            this.FileDataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FileDataPanel.Margin = new System.Windows.Forms.Padding(4);
             this.FileDataPanel.Name = "FileDataPanel";
             this.FileDataPanel.Size = new System.Drawing.Size(884, 137);
             this.FileDataPanel.TabIndex = 33;
@@ -240,7 +250,7 @@
             // 
             this.NumUpIdent.DecimalPlaces = 2;
             this.NumUpIdent.Location = new System.Drawing.Point(128, 271);
-            this.NumUpIdent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumUpIdent.Margin = new System.Windows.Forms.Padding(4);
             this.NumUpIdent.Maximum = new decimal(new int[] {
             1500,
             0,
@@ -258,7 +268,7 @@
             // CalculateRequencyRatios
             // 
             this.CalculateRequencyRatios.Location = new System.Drawing.Point(12, 229);
-            this.CalculateRequencyRatios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CalculateRequencyRatios.Margin = new System.Windows.Forms.Padding(4);
             this.CalculateRequencyRatios.Name = "CalculateRequencyRatios";
             this.CalculateRequencyRatios.Size = new System.Drawing.Size(223, 36);
             this.CalculateRequencyRatios.TabIndex = 31;
@@ -270,7 +280,7 @@
             // 
             this.NumUpTimeRange.DecimalPlaces = 3;
             this.NumUpTimeRange.Location = new System.Drawing.Point(128, 38);
-            this.NumUpTimeRange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumUpTimeRange.Margin = new System.Windows.Forms.Padding(4);
             this.NumUpTimeRange.Name = "NumUpTimeRange";
             this.NumUpTimeRange.Size = new System.Drawing.Size(105, 22);
             this.NumUpTimeRange.TabIndex = 30;
@@ -284,7 +294,7 @@
             // 
             this.NumUpTimeStart.DecimalPlaces = 3;
             this.NumUpTimeStart.Location = new System.Drawing.Point(12, 38);
-            this.NumUpTimeStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumUpTimeStart.Margin = new System.Windows.Forms.Padding(4);
             this.NumUpTimeStart.Name = "NumUpTimeStart";
             this.NumUpTimeStart.Size = new System.Drawing.Size(105, 22);
             this.NumUpTimeStart.TabIndex = 29;
@@ -305,10 +315,9 @@
             this.tabPage2.Controls.Add(this.algoritmSelector);
             this.tabPage2.Controls.Add(this.layerSelector);
             this.tabPage2.Controls.Add(this.richTextBox1);
-            this.tabPage2.Controls.Add(this.predictGet);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1135, 501);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NeuronNetwork";
@@ -367,7 +376,8 @@
             this.activationSelector.Items.AddRange(new object[] {
             "BipolarSigmoidFunction",
             "SigmoidFunction",
-            "ThresholdFunction"});
+            "ThresholdFunction",
+            "TanhActivationFunction"});
             this.activationSelector.Location = new System.Drawing.Point(887, 127);
             this.activationSelector.Name = "activationSelector";
             this.activationSelector.Size = new System.Drawing.Size(221, 24);
@@ -414,14 +424,91 @@
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.resultText);
+            this.tabPage3.Controls.Add(this.predictGet);
+            this.tabPage3.Controls.Add(this.numericUpDown3);
+            this.tabPage3.Controls.Add(this.numericUpDown2);
+            this.tabPage3.Controls.Add(this.numericUpDown1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1135, 501);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Predict";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown1.Location = new System.Drawing.Point(114, 90);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown1.TabIndex = 0;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.DecimalPlaces = 2;
+            this.numericUpDown2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown2.Location = new System.Drawing.Point(260, 89);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown2.TabIndex = 1;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.DecimalPlaces = 2;
+            this.numericUpDown3.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown3.Location = new System.Drawing.Point(406, 89);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown3.TabIndex = 2;
+            // 
             // predictGet
             // 
-            this.predictGet.Location = new System.Drawing.Point(416, 249);
+            this.predictGet.Location = new System.Drawing.Point(114, 147);
             this.predictGet.Name = "predictGet";
             this.predictGet.Size = new System.Drawing.Size(160, 23);
-            this.predictGet.TabIndex = 15;
+            this.predictGet.TabIndex = 16;
             this.predictGet.Text = "Test NN";
             this.predictGet.UseVisualStyleBackColor = true;
+            this.predictGet.Click += new System.EventHandler(this.predictGet_Click);
+            // 
+            // resultText
+            // 
+            this.resultText.Location = new System.Drawing.Point(486, 147);
+            this.resultText.Name = "resultText";
+            this.resultText.Size = new System.Drawing.Size(291, 96);
+            this.resultText.TabIndex = 17;
+            this.resultText.Text = "";
             // 
             // SoundAnalyzer
             // 
@@ -429,7 +516,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 534);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SoundAnalyzer";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.SoundAnalyzer_Load);
@@ -443,6 +530,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeStart)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -477,7 +568,12 @@
         private System.Windows.Forms.ComboBox algoritmSelector;
         private System.Windows.Forms.ComboBox layerSelector;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.RichTextBox resultText;
         private System.Windows.Forms.Button predictGet;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }
 

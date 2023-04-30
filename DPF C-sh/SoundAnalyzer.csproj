@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivationFunctionsCustom\TanhActivationFunction.cs" />
     <Compile Include="Libraries\alglib\alglibinternal.cs" />
     <Compile Include="Libraries\alglib\ap.cs" />
     <Compile Include="Libraries\alglib\fasttransforms.cs" />

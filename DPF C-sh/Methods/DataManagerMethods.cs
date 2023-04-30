@@ -9,6 +9,8 @@ using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ComboBox = System.Windows.Forms.ComboBox;
+using AForge.Math.Metrics;
+using DPF_C_sh.ActivationFunctionsCustom;
 
 namespace DPF_C_sh.Methods
 {
@@ -138,7 +140,6 @@ namespace DPF_C_sh.Methods
         public void CalculateRequencyRatios(ref MainDataModel dataContext, NumericUpDown numUpMaxCount, NumericUpDown numUpIdent)
         {
             dataContext.requencyRatios = new Dictionary<int, List<double>>();
-
             foreach (var resultDpf in dataContext.resultDpf)
             {
                 var delta = (int)numUpIdent.Value;
@@ -151,7 +152,7 @@ namespace DPF_C_sh.Methods
                     for (int l = k + 1; l < resultLocalMaximum.Count; l++)
                     {
                         dataContext.requencyRatios[resultDpf.Key].Add(resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency >= 1
-                            ? resultLocalMaximum[l].Frecuency / resultLocalMaximum[k].Frecuency : resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency);
+                            ? Math.Round(resultLocalMaximum[l].Frecuency / resultLocalMaximum[k].Frecuency, 2) : Math.Round(resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency,2));
                     }
             }
         }
@@ -161,7 +162,6 @@ namespace DPF_C_sh.Methods
             var resultTemp = new List<SoundElement>();
             var res = new List<SoundElement>();
             SoundElement temp;
-
             for (int i = 2; i < resultData.Count() - 1; i++)
                 if (resultData[i].Amplitude > resultData[i + 1].Amplitude && resultData[i].Amplitude > resultData[i - 1].Amplitude)
                     resultTemp.Add(resultData[i]);
@@ -186,7 +186,6 @@ namespace DPF_C_sh.Methods
                             f = false;
                     if (f) res.Add(resultTemp[i]);
                 }
-
             res.RemoveRange((int)numUpMaxCount.Value, res.Count() - (int)numUpMaxCount.Value);
 
             return res;
@@ -205,6 +204,7 @@ namespace DPF_C_sh.Methods
             int index = 0;
             foreach(var el in dataContext.requencyRatios)
             {
+                el.Value.Sort();
                 input[index] = el.Value.ToArray();
                 index++;
             }
@@ -223,11 +223,13 @@ namespace DPF_C_sh.Methods
             {
                 //Установить сеть
                 if (Activation.Text == "SigmoidFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(2), Layers[0], Layers);
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
                 else if (Activation.Text == "ThresholdFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), Layers[0], Layers);
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
                 else if (Activation.Text == "BipolarSigmoidFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(2), Layers[0], Layers);
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
+                else if (Activation.Text == "TanhActivationFunction")
+                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new TanhActivationFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length - 1).ToArray());
                 //Метод обучения - это алгоритм обучения восприятию 
                 if (LearningAlg.Text == "BackPropagationLearning")
                     dataContext.neuronNetworkModel.teacher0 = new BackPropagationLearning(dataContext.neuronNetworkModel.network);
@@ -237,7 +239,7 @@ namespace DPF_C_sh.Methods
                     dataContext.neuronNetworkModel.teacher2 = new PerceptronLearning(dataContext.neuronNetworkModel.network);
                 else if (LearningAlg.Text == "ResilientBackpropagationLearning")
                     dataContext.neuronNetworkModel.teacher3 = new ResilientBackpropagationLearning(dataContext.neuronNetworkModel.network);
-
+                //dataContext.neuronNetworkModel.teacher0.LearningRate = 1;
                 //Определение абсолютная ошибка 
                 double error = 1.0;
                 Console.WriteLine();
@@ -246,7 +248,7 @@ namespace DPF_C_sh.Methods
                 //Количество итераций 
                 int iterations = 0;
                 Console.WriteLine();
-                while (error > 0.01)
+                while (error > 0.01 && iterations<100000)
                 {
                     if (LearningAlg.Text == "BackPropagationLearning")
                         error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
@@ -262,19 +264,21 @@ namespace DPF_C_sh.Methods
                 Console.WriteLine("iterations  ===>  {0}", iterations);
                 Console.WriteLine();
                 Console.WriteLine("sim:");
-                dataContext.neuronNetworkModel.network.Save("learnedNetwork");
+                //dataContext.neuronNetworkModel.network.Save("learnedNetwork");
             }
         }
 
-        //public string GetPredict(double[][] PredictData)
-        //{
-        //    string res = "";
-        //    for (int i = 0; i < PredictData.Length; i++)
-        //    {
-        //        res += String.Format("sim{0}:  ===>  {1}\n", i, network.Compute(PredictData[i])[0]);
-        //    }
-        //    return res;
-        //}
+        public void NGetPredict(MainDataModel dataContext, RichTextBox resText, NumericUpDown numericUpDown1, NumericUpDown numericUpDown2, NumericUpDown numericUpDown3)
+        {
+            double[][] PredictData = new double[1][];
+            PredictData[0] = new double[] { (double)numericUpDown1.Value, (double)numericUpDown2.Value, (double)numericUpDown3.Value };
+            string res = "";
+            for (int i = 0; i < PredictData.Length; i++)
+            {
+                res += String.Format("sim{0}:  ===>  {1}\n", i, dataContext.neuronNetworkModel.network.Compute(PredictData[i])[0]);
+            }
+            resText.Text = res;
+        }
         #endregion
     }
 }

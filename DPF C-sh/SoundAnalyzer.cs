@@ -91,5 +91,10 @@ namespace DPF_C_sh
         {
             _accessoryMethods.NOpenLearnedFile(ref _dataContext, OpenFileDialog);
         }
+
+        private void predictGet_Click(object sender, EventArgs e)
+        {
+            _dataManagerMethods.NGetPredict(_dataContext, resultText, numericUpDown1, numericUpDown2, numericUpDown3);
+        }
     }
 }
