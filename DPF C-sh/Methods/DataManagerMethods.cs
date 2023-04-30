@@ -151,7 +151,7 @@ namespace DPF_C_sh.Methods
                     for (int l = k + 1; l < resultLocalMaximum.Count; l++)
                     {
                         dataContext.requencyRatios[resultDpf.Key].Add(resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency >= 1
-                            ? resultLocalMaximum[l].Frecuency / resultLocalMaximum[k].Frecuency : resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency);
+                            ? Math.Round(resultLocalMaximum[l].Frecuency / resultLocalMaximum[k].Frecuency, 2) : Math.Round(resultLocalMaximum[k].Frecuency / resultLocalMaximum[l].Frecuency, 2));
                     }
             }
         }

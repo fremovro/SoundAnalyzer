@@ -91,5 +91,10 @@ namespace DPF_C_sh
         {
             _accessoryMethods.NOpenLearnedFile(ref _dataContext, OpenFileDialog);
         }
+
+        private void getExcel_Click(object sender, EventArgs e)
+        {
+            _accessoryMethods.CreateExcelRequencyRatios(_dataContext);
+        }
     }
 }

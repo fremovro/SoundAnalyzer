@@ -74,3 +74,26 @@ C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.xml
 C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Genetic.xml
 C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Math.xml
 C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Neuro.xml
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\DPF C-sh.exe.config
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\DPF C-sh.exe
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\DPF C-sh.pdb
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.dll
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Genetic.dll
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Math.dll
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Neuro.dll
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\NAudio.dll
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.xml
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Genetic.xml
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Math.xml
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\AForge.Neuro.xml
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\bin\Debug\NAudio.xml
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\SoundAnalyzer.csproj.AssemblyReference.cache
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\SoundAnalyzer.csproj.SuggestedBindingRedirects.cache
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\SoundAnalyzer.csproj.ResolveComReference.cache
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\DPF_C_sh.SoundAnalyzer.resources
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\DPF_C_sh.Properties.Resources.resources
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\SoundAnalyzer.csproj.GenerateResource.cache
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\SoundAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\SoundAnalyzer.csproj.CopyComplete
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\DPF C-sh.exe
+C:\Users\fremovro\Source\Repos\fremovro\SoundAnalyzer\DPF C-sh\obj\Debug\DPF C-sh.pdb

@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Windows.Forms;
-using DPF_C_sh.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using System;
 using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using DPF_C_sh.Models;
 using ComboBox = System.Windows.Forms.ComboBox;
 using TextBox = System.Windows.Forms.TextBox;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DPF_C_sh.Methods
 {
@@ -23,7 +22,7 @@ namespace DPF_C_sh.Methods
             if (dataContext.fileDataChart == null)
             {
                 // Создание элемента Chart
-                dataContext.fileDataChart = new Chart();
+                dataContext.fileDataChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 
                 // Растягивание элемента Chart на панели
                 dataContext.fileDataChart.Parent = panel;
@@ -36,10 +35,10 @@ namespace DPF_C_sh.Methods
             }
 
             // Добавление области для отрисовки графика
-            dataContext.fileDataChart.ChartAreas.Add(new ChartArea(chosenFile.Value.fileName));
+            dataContext.fileDataChart.ChartAreas.Add(new System.Windows.Forms.DataVisualization.Charting.ChartArea(chosenFile.Value.fileName));
 
             // Создаем и настраиваем набор точек для рисования графика
-            Series pointSeries = new Series("Sound");
+            System.Windows.Forms.DataVisualization.Charting.Series pointSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Sound");
             pointSeries.ChartType = SeriesChartType.Line;
             pointSeries.ChartArea = chosenFile.Value.fileName;
 
@@ -69,7 +68,7 @@ namespace DPF_C_sh.Methods
             if (dataContext.dpfDataChart is null)
             {
                 // Создание элемента Chart
-                dataContext.dpfDataChart = new Chart();
+                dataContext.dpfDataChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
 
                 // Растягивание элемента Chart на панели
                 dataContext.dpfDataChart.Parent = panel;
@@ -82,10 +81,10 @@ namespace DPF_C_sh.Methods
             }
 
             // Добавление области для отрисовки графика
-            dataContext.dpfDataChart.ChartAreas.Add(new ChartArea(chosenFile.Value.fileName));
+            dataContext.dpfDataChart.ChartAreas.Add(new System.Windows.Forms.DataVisualization.Charting.ChartArea(chosenFile.Value.fileName));
 
             // Создаем и настраиваем набор точек для рисования графика
-            Series pointSeries = new Series("Sound");
+            System.Windows.Forms.DataVisualization.Charting.Series pointSeries = new System.Windows.Forms.DataVisualization.Charting.Series("Sound");
             pointSeries.ChartType = SeriesChartType.Line;
             pointSeries.ChartArea = chosenFile.Value.fileName;
 
@@ -148,71 +147,40 @@ namespace DPF_C_sh.Methods
 
         public void CreateExcelRequencyRatios(MainDataModel dataContext)
         {
-            //// Создаём объект - экземпляр нашего приложения
-            //Excel.Application excelApp = new Excel.Application();
+            // Создаём объект - экземпляр нашего приложения
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
 
-            //// Создаём экземпляр рабочей книги Excel
-            //Excel.Workbook workBook;
+            // Создаём экземпляр рабочей книги Excel
+            Microsoft.Office.Interop.Excel.Workbook workBook;
 
-            //// Создаём экземпляр листа Excel
-            //Excel.Worksheet workSheet;
-            //Excel.Worksheet workSheet2;
-            //workBook = excelApp.Workbooks.Add();
-            //workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(1);
-            //workSheet2 = (Excel.Worksheet)workBook.Worksheets.Add();
+            // Создаём экземпляр листа Excel
+            Microsoft.Office.Interop.Excel.Worksheet workSheet;
+            workBook = excelApp.Workbooks.Add();
+            workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets.get_Item(1);
 
-            //// Заполняем первый столбец листа из массива Y[0..n-1]
-            //for (int j = 1; j <= dataContext.requencyRatios.Count(); j++)
-            //{
-            //    workSheet.Cells[j, 1] = 10 * Math.Log10(dataContext.requencyRatios[j - 1].Amplitude / dataContext.maxDpfAmplitude);
-            //    workSheet.Cells[j, 2] = res[j - 1].Frecuency;
-            //}
+            double[][] output = new double[dataContext.requencyRatios.ToArray().Length][];
 
-            //// Вывод текста
-            //int cellerNum = 1;
-            //for (int k = 0; k < res.Count; k++)
-            //{
-            //    for (int l = k + 1; l < res.Count; l++)
-            //    {
-            //        if (res[k].Frecuency / res[l].Frecuency >= 1)
-            //        {
-            //            workSheet2.Cells[cellerNum, 1] = res[l].Frecuency / res[k].Frecuency;
-            //        }
-            //        else
-            //            workSheet2.Cells[cellerNum, 1] = res[k].Frecuency / res[l].Frecuency;
-            //        cellerNum++;
-            //    }
-            //}
+            foreach (var el in dataContext.wavFiles)
+                output[el.Key] = new double[] { el.Value.emotionNum };
 
-
-            //// Открываем созданный excel-файл
-            //excelApp.Visible = true;
-            //excelApp.UserControl = true;
-
-            //if (resultDataChart.Series.Count < 4)
-            //{
-            //    for (int i = 0; i < res.Count; i++)
-            //    {
-            //        resultDataChart.Series.Add("p" + i.ToString());
-            //        resultDataChart.Series["p" + i.ToString()].Color = Color.Red;
-            //        resultDataChart.Series["p" + i.ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            //        resultDataChart.Series["p" + i.ToString()].Points.AddXY(res[i].Frecuency, 10 * Math.Log10(res[i].Amplitude / dataContext.maxDpfAmplitude));
-            //    }
-            //}
-            //else
-            //{
-            //    for (int i = 0; resultDataChart.Series.Count != 1; i++)
-            //    {
-            //        resultDataChart.Series.Remove(resultDataChart.Series["p" + i.ToString()]);
-            //    }
-            //    for (int i = 0; i < res.Count; i++)
-            //    {
-            //        resultDataChart.Series.Add("p" + i.ToString());
-            //        resultDataChart.Series["p" + i.ToString()].Color = Color.Red;
-            //        resultDataChart.Series["p" + i.ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            //        resultDataChart.Series["p" + i.ToString()].Points.AddXY(res[i].Frecuency, 10 * Math.Log10(res[i].Amplitude / dataContext.maxDpfAmplitude));
-            //    }
-            //}
+            int index = 1;
+            foreach (var el in dataContext.requencyRatios)
+            {
+                if (index == 1)
+                {
+                    for (var i = 0; i < el.Value.Count; i++)
+                        workSheet.Cells[index, i + 1] = $"X{i + 1}";
+                    workSheet.Cells[index, el.Value.Count + 1] = $"Y1";
+                    index++;
+                }
+                for (var i = 0; i < el.Value.Count; i++)
+                    workSheet.Cells[index, i + 1] = el.Value[i];
+                workSheet.Cells[index, el.Value.Count + 1] = output[el.Key][0];
+                index++;
+            }
+            // Открываем созданный excel-файл
+            excelApp.Visible = true;
+            excelApp.UserControl = true;
         }
 
         public void NLayerGenerator(ref MainDataModel dataContext, ComboBox layerCount, TabPage tabPage)
@@ -222,19 +190,20 @@ namespace DPF_C_sh.Methods
                 tabPage.Controls.Remove(dataContext.layersList[i]);
                 dataContext.layersList.Remove(dataContext.layersList[i]);
             }
+            var loc = layerCount.Location;
             for (int i = dataContext.layersList.Count(); i < int.Parse(layerCount.SelectedItem.ToString()); i++)
             {
                 NumericUpDown newNumericUpDown = new NumericUpDown();
                 NumericUpDown lastOld = dataContext.layersList.LastOrDefault();
                 if (lastOld == null)
                 {
-                    newNumericUpDown.Location = new Point(678, 109);
-                    newNumericUpDown.Size = new Size(186, 24);
+                    newNumericUpDown.Location = new System.Drawing.Point(loc.X, loc.Y+30);
+                    newNumericUpDown.Size = layerCount.Size;
                 }
                 else
                 {
-                    newNumericUpDown.Location = new Point(lastOld.Location.X, lastOld.Location.Y + 30);
-                    newNumericUpDown.Size = new Size(186, 24);
+                    newNumericUpDown.Location = new System.Drawing.Point(lastOld.Location.X, lastOld.Location.Y + 30);
+                    newNumericUpDown.Size = layerCount.Size;
                 }
                 dataContext.layersList.Add(newNumericUpDown);
                 tabPage.Controls.Add(newNumericUpDown);

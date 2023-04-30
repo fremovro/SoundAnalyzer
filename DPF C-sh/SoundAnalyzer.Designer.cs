@@ -47,6 +47,7 @@
             this.NumUpTimeRange = new System.Windows.Forms.NumericUpDown();
             this.NumUpTimeStart = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.getExcel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,10 +76,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 0);
+            this.tabControl1.Location = new System.Drawing.Point(2, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1143, 530);
+            this.tabControl1.Size = new System.Drawing.Size(857, 431);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -98,20 +100,21 @@
             this.tabPage1.Controls.Add(this.CalculateRequencyRatios);
             this.tabPage1.Controls.Add(this.NumUpTimeRange);
             this.tabPage1.Controls.Add(this.NumUpTimeStart);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1135, 501);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(849, 405);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DPF";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // LeftChangeFile
             // 
-            this.LeftChangeFile.Location = new System.Drawing.Point(12, 106);
-            this.LeftChangeFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LeftChangeFile.Location = new System.Drawing.Point(9, 86);
+            this.LeftChangeFile.Margin = new System.Windows.Forms.Padding(2);
             this.LeftChangeFile.Name = "LeftChangeFile";
-            this.LeftChangeFile.Size = new System.Drawing.Size(105, 36);
+            this.LeftChangeFile.Size = new System.Drawing.Size(79, 29);
             this.LeftChangeFile.TabIndex = 39;
             this.LeftChangeFile.Text = "<\r\n";
             this.LeftChangeFile.UseVisualStyleBackColor = true;
@@ -119,10 +122,9 @@
             // 
             // OpenFilePart
             // 
-            this.OpenFilePart.Location = new System.Drawing.Point(12, 4);
-            this.OpenFilePart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OpenFilePart.Location = new System.Drawing.Point(9, 3);
             this.OpenFilePart.Name = "OpenFilePart";
-            this.OpenFilePart.Size = new System.Drawing.Size(147, 27);
+            this.OpenFilePart.Size = new System.Drawing.Size(110, 22);
             this.OpenFilePart.TabIndex = 27;
             this.OpenFilePart.Text = "Open file part";
             this.OpenFilePart.UseVisualStyleBackColor = true;
@@ -130,18 +132,18 @@
             // 
             // ChosenFileName
             // 
-            this.ChosenFileName.Location = new System.Drawing.Point(13, 74);
-            this.ChosenFileName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ChosenFileName.Location = new System.Drawing.Point(10, 60);
+            this.ChosenFileName.Margin = new System.Windows.Forms.Padding(2);
             this.ChosenFileName.Name = "ChosenFileName";
-            this.ChosenFileName.Size = new System.Drawing.Size(220, 22);
+            this.ChosenFileName.Size = new System.Drawing.Size(166, 22);
             this.ChosenFileName.TabIndex = 41;
             // 
             // RightChangeFile
             // 
-            this.RightChangeFile.Location = new System.Drawing.Point(128, 106);
-            this.RightChangeFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RightChangeFile.Location = new System.Drawing.Point(96, 86);
+            this.RightChangeFile.Margin = new System.Windows.Forms.Padding(2);
             this.RightChangeFile.Name = "RightChangeFile";
-            this.RightChangeFile.Size = new System.Drawing.Size(105, 36);
+            this.RightChangeFile.Size = new System.Drawing.Size(79, 29);
             this.RightChangeFile.TabIndex = 40;
             this.RightChangeFile.Text = ">";
             this.RightChangeFile.UseVisualStyleBackColor = true;
@@ -149,10 +151,9 @@
             // 
             // DPF
             // 
-            this.DPF.Location = new System.Drawing.Point(12, 159);
-            this.DPF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DPF.Location = new System.Drawing.Point(9, 129);
             this.DPF.Name = "DPF";
-            this.DPF.Size = new System.Drawing.Size(223, 36);
+            this.DPF.Size = new System.Drawing.Size(167, 29);
             this.DPF.TabIndex = 28;
             this.DPF.Text = "DPF";
             this.DPF.UseVisualStyleBackColor = true;
@@ -160,18 +161,17 @@
             // 
             // ChosenRequency
             // 
-            this.ChosenRequency.Location = new System.Drawing.Point(12, 306);
-            this.ChosenRequency.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ChosenRequency.Location = new System.Drawing.Point(9, 249);
             this.ChosenRequency.Multiline = true;
             this.ChosenRequency.Name = "ChosenRequency";
             this.ChosenRequency.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ChosenRequency.Size = new System.Drawing.Size(223, 191);
+            this.ChosenRequency.Size = new System.Drawing.Size(168, 156);
             this.ChosenRequency.TabIndex = 38;
             // 
             // NumUpMaxCount
             // 
-            this.NumUpMaxCount.Location = new System.Drawing.Point(12, 271);
-            this.NumUpMaxCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NumUpMaxCount.Location = new System.Drawing.Point(9, 220);
+            this.NumUpMaxCount.Margin = new System.Windows.Forms.Padding(2);
             this.NumUpMaxCount.Maximum = new decimal(new int[] {
             10,
             0,
@@ -183,7 +183,7 @@
             0,
             0});
             this.NumUpMaxCount.Name = "NumUpMaxCount";
-            this.NumUpMaxCount.Size = new System.Drawing.Size(105, 22);
+            this.NumUpMaxCount.Size = new System.Drawing.Size(79, 22);
             this.NumUpMaxCount.TabIndex = 37;
             this.NumUpMaxCount.Value = new decimal(new int[] {
             3,
@@ -194,25 +194,25 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(168, 8);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBox1.Location = new System.Drawing.Point(126, 6);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(65, 20);
+            this.checkBox1.Size = new System.Drawing.Size(60, 17);
             this.checkBox1.TabIndex = 36;
             this.checkBox1.Text = "db (!!!)";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // NumUpSmooth
             // 
-            this.NumUpSmooth.Location = new System.Drawing.Point(12, 201);
-            this.NumUpSmooth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NumUpSmooth.Location = new System.Drawing.Point(9, 163);
+            this.NumUpSmooth.Margin = new System.Windows.Forms.Padding(2);
             this.NumUpSmooth.Maximum = new decimal(new int[] {
             5000,
             0,
             0,
             0});
             this.NumUpSmooth.Name = "NumUpSmooth";
-            this.NumUpSmooth.Size = new System.Drawing.Size(221, 22);
+            this.NumUpSmooth.Size = new System.Drawing.Size(166, 22);
             this.NumUpSmooth.TabIndex = 35;
             this.NumUpSmooth.Value = new decimal(new int[] {
             500,
@@ -222,32 +222,29 @@
             // 
             // DpfDataPanel
             // 
-            this.DpfDataPanel.Location = new System.Drawing.Point(247, 159);
-            this.DpfDataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DpfDataPanel.Location = new System.Drawing.Point(185, 129);
             this.DpfDataPanel.Name = "DpfDataPanel";
-            this.DpfDataPanel.Size = new System.Drawing.Size(884, 338);
+            this.DpfDataPanel.Size = new System.Drawing.Size(663, 275);
             this.DpfDataPanel.TabIndex = 34;
             // 
             // FileDataPanel
             // 
-            this.FileDataPanel.Location = new System.Drawing.Point(247, 4);
-            this.FileDataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FileDataPanel.Location = new System.Drawing.Point(185, 3);
             this.FileDataPanel.Name = "FileDataPanel";
-            this.FileDataPanel.Size = new System.Drawing.Size(884, 137);
+            this.FileDataPanel.Size = new System.Drawing.Size(663, 111);
             this.FileDataPanel.TabIndex = 33;
             // 
             // NumUpIdent
             // 
             this.NumUpIdent.DecimalPlaces = 2;
-            this.NumUpIdent.Location = new System.Drawing.Point(128, 271);
-            this.NumUpIdent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumUpIdent.Location = new System.Drawing.Point(96, 220);
             this.NumUpIdent.Maximum = new decimal(new int[] {
             1500,
             0,
             0,
             0});
             this.NumUpIdent.Name = "NumUpIdent";
-            this.NumUpIdent.Size = new System.Drawing.Size(105, 22);
+            this.NumUpIdent.Size = new System.Drawing.Size(79, 22);
             this.NumUpIdent.TabIndex = 32;
             this.NumUpIdent.Value = new decimal(new int[] {
             100,
@@ -257,10 +254,9 @@
             // 
             // CalculateRequencyRatios
             // 
-            this.CalculateRequencyRatios.Location = new System.Drawing.Point(12, 229);
-            this.CalculateRequencyRatios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CalculateRequencyRatios.Location = new System.Drawing.Point(9, 186);
             this.CalculateRequencyRatios.Name = "CalculateRequencyRatios";
-            this.CalculateRequencyRatios.Size = new System.Drawing.Size(223, 36);
+            this.CalculateRequencyRatios.Size = new System.Drawing.Size(167, 29);
             this.CalculateRequencyRatios.TabIndex = 31;
             this.CalculateRequencyRatios.Text = "Result";
             this.CalculateRequencyRatios.UseVisualStyleBackColor = true;
@@ -269,10 +265,9 @@
             // NumUpTimeRange
             // 
             this.NumUpTimeRange.DecimalPlaces = 3;
-            this.NumUpTimeRange.Location = new System.Drawing.Point(128, 38);
-            this.NumUpTimeRange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumUpTimeRange.Location = new System.Drawing.Point(96, 31);
             this.NumUpTimeRange.Name = "NumUpTimeRange";
-            this.NumUpTimeRange.Size = new System.Drawing.Size(105, 22);
+            this.NumUpTimeRange.Size = new System.Drawing.Size(79, 22);
             this.NumUpTimeRange.TabIndex = 30;
             this.NumUpTimeRange.Value = new decimal(new int[] {
             1,
@@ -283,10 +278,9 @@
             // NumUpTimeStart
             // 
             this.NumUpTimeStart.DecimalPlaces = 3;
-            this.NumUpTimeStart.Location = new System.Drawing.Point(12, 38);
-            this.NumUpTimeStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NumUpTimeStart.Location = new System.Drawing.Point(9, 31);
             this.NumUpTimeStart.Name = "NumUpTimeStart";
-            this.NumUpTimeStart.Size = new System.Drawing.Size(105, 22);
+            this.NumUpTimeStart.Size = new System.Drawing.Size(79, 22);
             this.NumUpTimeStart.TabIndex = 29;
             this.NumUpTimeStart.Value = new decimal(new int[] {
             1,
@@ -296,6 +290,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.getExcel);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label1);
@@ -306,46 +301,62 @@
             this.tabPage2.Controls.Add(this.layerSelector);
             this.tabPage2.Controls.Add(this.richTextBox1);
             this.tabPage2.Controls.Add(this.predictGet);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1135, 501);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(849, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NeuronNetwork";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // getExcel
+            // 
+            this.getExcel.Location = new System.Drawing.Point(79, 245);
+            this.getExcel.Margin = new System.Windows.Forms.Padding(2);
+            this.getExcel.Name = "getExcel";
+            this.getExcel.Size = new System.Drawing.Size(106, 32);
+            this.getExcel.TabIndex = 24;
+            this.getExcel.Text = "Excel";
+            this.getExcel.UseVisualStyleBackColor = true;
+            this.getExcel.Click += new System.EventHandler(this.getExcel_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(929, 108);
+            this.label3.Location = new System.Drawing.Point(697, 88);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 16);
+            this.label3.Size = new System.Drawing.Size(115, 13);
             this.label3.TabIndex = 23;
             this.label3.Text = "Функция активации";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(930, 60);
+            this.label2.Location = new System.Drawing.Point(698, 49);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 16);
+            this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 22;
             this.label2.Text = "Алгоритм обучения";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(705, 60);
+            this.label1.Location = new System.Drawing.Point(529, 49);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
+            this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 21;
             this.label1.Text = "Количество слоёв";
             // 
             // learnNetwork
             // 
-            this.learnNetwork.Location = new System.Drawing.Point(105, 249);
+            this.learnNetwork.Location = new System.Drawing.Point(79, 202);
+            this.learnNetwork.Margin = new System.Windows.Forms.Padding(2);
             this.learnNetwork.Name = "learnNetwork";
-            this.learnNetwork.Size = new System.Drawing.Size(142, 23);
+            this.learnNetwork.Size = new System.Drawing.Size(106, 39);
             this.learnNetwork.TabIndex = 20;
             this.learnNetwork.Text = "Обучить";
             this.learnNetwork.UseVisualStyleBackColor = true;
@@ -353,9 +364,10 @@
             // 
             // openNetwork
             // 
-            this.openNetwork.Location = new System.Drawing.Point(921, 176);
+            this.openNetwork.Location = new System.Drawing.Point(691, 143);
+            this.openNetwork.Margin = new System.Windows.Forms.Padding(2);
             this.openNetwork.Name = "openNetwork";
-            this.openNetwork.Size = new System.Drawing.Size(160, 53);
+            this.openNetwork.Size = new System.Drawing.Size(120, 43);
             this.openNetwork.TabIndex = 19;
             this.openNetwork.Text = "Открыть файл готовой сети";
             this.openNetwork.UseVisualStyleBackColor = true;
@@ -368,9 +380,10 @@
             "BipolarSigmoidFunction",
             "SigmoidFunction",
             "ThresholdFunction"});
-            this.activationSelector.Location = new System.Drawing.Point(887, 127);
+            this.activationSelector.Location = new System.Drawing.Point(665, 103);
+            this.activationSelector.Margin = new System.Windows.Forms.Padding(2);
             this.activationSelector.Name = "activationSelector";
-            this.activationSelector.Size = new System.Drawing.Size(221, 24);
+            this.activationSelector.Size = new System.Drawing.Size(167, 21);
             this.activationSelector.TabIndex = 18;
             // 
             // algoritmSelector
@@ -381,9 +394,10 @@
             "DeltaRuleLearning",
             "PerceptronLearning",
             "ResilientBackpropagationLearning"});
-            this.algoritmSelector.Location = new System.Drawing.Point(887, 79);
+            this.algoritmSelector.Location = new System.Drawing.Point(665, 64);
+            this.algoritmSelector.Margin = new System.Windows.Forms.Padding(2);
             this.algoritmSelector.Name = "algoritmSelector";
-            this.algoritmSelector.Size = new System.Drawing.Size(221, 24);
+            this.algoritmSelector.Size = new System.Drawing.Size(167, 21);
             this.algoritmSelector.TabIndex = 17;
             // 
             // layerSelector
@@ -400,36 +414,38 @@
             "8",
             "9",
             "10"});
-            this.layerSelector.Location = new System.Drawing.Point(678, 79);
+            this.layerSelector.Location = new System.Drawing.Point(511, 64);
+            this.layerSelector.Margin = new System.Windows.Forms.Padding(2);
             this.layerSelector.Name = "layerSelector";
-            this.layerSelector.Size = new System.Drawing.Size(186, 24);
+            this.layerSelector.Size = new System.Drawing.Size(140, 21);
             this.layerSelector.TabIndex = 16;
             this.layerSelector.SelectedIndexChanged += new System.EventHandler(this.layerSelector_SelectedIndexChanged);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(53, 30);
+            this.richTextBox1.Location = new System.Drawing.Point(40, 24);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(552, 169);
+            this.richTextBox1.Size = new System.Drawing.Size(415, 138);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
             // predictGet
             // 
-            this.predictGet.Location = new System.Drawing.Point(416, 249);
+            this.predictGet.Location = new System.Drawing.Point(312, 202);
+            this.predictGet.Margin = new System.Windows.Forms.Padding(2);
             this.predictGet.Name = "predictGet";
-            this.predictGet.Size = new System.Drawing.Size(160, 23);
+            this.predictGet.Size = new System.Drawing.Size(120, 39);
             this.predictGet.TabIndex = 15;
             this.predictGet.Text = "Test NN";
             this.predictGet.UseVisualStyleBackColor = true;
             // 
             // SoundAnalyzer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 534);
+            this.ClientSize = new System.Drawing.Size(862, 434);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SoundAnalyzer";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.SoundAnalyzer_Load);
@@ -478,6 +494,7 @@
         private System.Windows.Forms.ComboBox layerSelector;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button predictGet;
+        private System.Windows.Forms.Button getExcel;
     }
 }
 
