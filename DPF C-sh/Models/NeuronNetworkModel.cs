@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AForge.Neuro.Learning;
-using AForge.Neuro;
+//using AForge.Neuro.Learning;
+//using AForge.Neuro;
+using Accord.Neuro.Learning;
+using Accord.Neuro;
 
 namespace DPF_C_sh.Models
 {
@@ -38,7 +40,10 @@ namespace DPF_C_sh.Models
         /// Функция обучения устойчивоого обратноого распространения
         /// </summary>
         public ResilientBackpropagationLearning teacher3;
-
+        /// <summary>
+        /// Функция обучения Левенберга-Маркварда
+        /// </summary>
+        public LevenbergMarquardtLearning teacher4;
         /// <summary>
         /// Конструктор сети для обучения/тестирования
         /// </summary>

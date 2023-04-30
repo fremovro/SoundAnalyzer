@@ -1,4 +1,6 @@
-﻿using AForge.Neuro;
+﻿//using AForge.Neuro;
+using Accord.Neuro.Learning;
+using Accord.Neuro;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,7 @@
-﻿using AForge.Neuro.Learning;
-using AForge.Neuro;
+﻿//using AForge.Neuro.Learning;
+//using AForge.Neuro;
+using Accord.Neuro.Learning;
+using Accord.Neuro;
 using DPF_C_sh.Models;
 using System;
 using System.Collections.Generic;
@@ -198,8 +200,11 @@ namespace DPF_C_sh.Methods
             double[][] input = new double[dataContext.requencyRatios.ToArray().Length][];
             double[][] output = new double[dataContext.requencyRatios.ToArray().Length][];
 
-            foreach(var el in dataContext.wavFiles)
-                output[el.Key] = new double[] { el.Value.emotionNum };
+            foreach (var el in dataContext.wavFiles)
+            {
+                output[el.Key] = Enumerable.Repeat(0.0, 3).ToArray();
+                output[el.Key][el.Value.emotionNum] = 1;
+            }
 
             int index = 0;
             foreach(var el in dataContext.requencyRatios)
@@ -239,6 +244,8 @@ namespace DPF_C_sh.Methods
                     dataContext.neuronNetworkModel.teacher2 = new PerceptronLearning(dataContext.neuronNetworkModel.network);
                 else if (LearningAlg.Text == "ResilientBackpropagationLearning")
                     dataContext.neuronNetworkModel.teacher3 = new ResilientBackpropagationLearning(dataContext.neuronNetworkModel.network);
+                else if (LearningAlg.Text == "LevenbergMarquardtLearning")
+                    dataContext.neuronNetworkModel.teacher4 = new LevenbergMarquardtLearning(dataContext.neuronNetworkModel.network);
                 //dataContext.neuronNetworkModel.teacher0.LearningRate = 1;
                 //Определение абсолютная ошибка 
                 double error = 1.0;
@@ -275,7 +282,7 @@ namespace DPF_C_sh.Methods
             string res = "";
             for (int i = 0; i < PredictData.Length; i++)
             {
-                res += String.Format("sim{0}:  ===>  {1}\n", i, dataContext.neuronNetworkModel.network.Compute(PredictData[i])[0]);
+                res += String.Format("sim{0}:  ===>  {1}, {2}, {3}\n", i, dataContext.neuronNetworkModel.network.Compute(PredictData[i])[0], dataContext.neuronNetworkModel.network.Compute(PredictData[i])[1], dataContext.neuronNetworkModel.network.Compute(PredictData[i])[2]);
             }
             resText.Text = res;
         }

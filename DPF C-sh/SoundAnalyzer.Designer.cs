@@ -57,11 +57,11 @@
             this.layerSelector = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.predictGet = new System.Windows.Forms.Button();
             this.resultText = new System.Windows.Forms.RichTextBox();
+            this.predictGet = new System.Windows.Forms.Button();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpMaxCount)).BeginInit();
@@ -71,9 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeStart)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // OpenFileDialog
@@ -390,7 +390,8 @@
             "BackPropagationLearning",
             "DeltaRuleLearning",
             "PerceptronLearning",
-            "ResilientBackpropagationLearning"});
+            "ResilientBackpropagationLearning",
+            "LevenbergMarquardtLearning"});
             this.algoritmSelector.Location = new System.Drawing.Point(887, 79);
             this.algoritmSelector.Name = "algoritmSelector";
             this.algoritmSelector.Size = new System.Drawing.Size(221, 24);
@@ -438,41 +439,23 @@
             this.tabPage3.Text = "Predict";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // resultText
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(114, 90);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 0;
+            this.resultText.Location = new System.Drawing.Point(486, 147);
+            this.resultText.Name = "resultText";
+            this.resultText.Size = new System.Drawing.Size(291, 96);
+            this.resultText.TabIndex = 17;
+            this.resultText.Text = "";
             // 
-            // numericUpDown2
+            // predictGet
             // 
-            this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numericUpDown2.Location = new System.Drawing.Point(260, 89);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown2.TabIndex = 1;
+            this.predictGet.Location = new System.Drawing.Point(114, 147);
+            this.predictGet.Name = "predictGet";
+            this.predictGet.Size = new System.Drawing.Size(160, 23);
+            this.predictGet.TabIndex = 16;
+            this.predictGet.Text = "Test NN";
+            this.predictGet.UseVisualStyleBackColor = true;
+            this.predictGet.Click += new System.EventHandler(this.predictGet_Click);
             // 
             // numericUpDown3
             // 
@@ -492,23 +475,41 @@
             this.numericUpDown3.Size = new System.Drawing.Size(120, 22);
             this.numericUpDown3.TabIndex = 2;
             // 
-            // predictGet
+            // numericUpDown2
             // 
-            this.predictGet.Location = new System.Drawing.Point(114, 147);
-            this.predictGet.Name = "predictGet";
-            this.predictGet.Size = new System.Drawing.Size(160, 23);
-            this.predictGet.TabIndex = 16;
-            this.predictGet.Text = "Test NN";
-            this.predictGet.UseVisualStyleBackColor = true;
-            this.predictGet.Click += new System.EventHandler(this.predictGet_Click);
+            this.numericUpDown2.DecimalPlaces = 2;
+            this.numericUpDown2.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown2.Location = new System.Drawing.Point(260, 89);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown2.TabIndex = 1;
             // 
-            // resultText
+            // numericUpDown1
             // 
-            this.resultText.Location = new System.Drawing.Point(486, 147);
-            this.resultText.Name = "resultText";
-            this.resultText.Size = new System.Drawing.Size(291, 96);
-            this.resultText.TabIndex = 17;
-            this.resultText.Text = "";
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numericUpDown1.Location = new System.Drawing.Point(114, 90);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown1.TabIndex = 0;
             // 
             // SoundAnalyzer
             // 
@@ -531,9 +532,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
