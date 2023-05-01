@@ -228,13 +228,13 @@ namespace DPF_C_sh.Methods
                 NumericUpDown lastOld = dataContext.layersList.LastOrDefault();
                 if (lastOld == null)
                 {
-                    newNumericUpDown.Location = new Point(678, 109);
-                    newNumericUpDown.Size = new Size(186, 24);
+                    newNumericUpDown.Location = new Point(layerCount.Location.X, layerCount.Location.Y + 30);
+                    newNumericUpDown.Size = new Size(layerCount.Size.Width, layerCount.Size.Height);
                 }
                 else
                 {
                     newNumericUpDown.Location = new Point(lastOld.Location.X, lastOld.Location.Y + 30);
-                    newNumericUpDown.Size = new Size(186, 24);
+                    newNumericUpDown.Size = new Size(layerCount.Size.Width, layerCount.Size.Height);
                 }
                 dataContext.layersList.Add(newNumericUpDown);
                 tabPage.Controls.Add(newNumericUpDown);

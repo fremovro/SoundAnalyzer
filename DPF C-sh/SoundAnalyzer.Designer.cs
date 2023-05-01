@@ -47,6 +47,8 @@
             this.NumUpTimeRange = new System.Windows.Forms.NumericUpDown();
             this.NumUpTimeStart = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.iterationCount = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeRange)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeStart)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iterationCount)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -306,6 +309,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.iterationCount);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label1);
@@ -322,6 +327,27 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NeuronNetwork";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(933, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 16);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Кол-во итераций";
+            // 
+            // iterationCount
+            // 
+            this.iterationCount.Location = new System.Drawing.Point(887, 176);
+            this.iterationCount.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.iterationCount.Name = "iterationCount";
+            this.iterationCount.Size = new System.Drawing.Size(221, 22);
+            this.iterationCount.TabIndex = 24;
             // 
             // label3
             // 
@@ -362,7 +388,7 @@
             // 
             // openNetwork
             // 
-            this.openNetwork.Location = new System.Drawing.Point(921, 176);
+            this.openNetwork.Location = new System.Drawing.Point(920, 219);
             this.openNetwork.Name = "openNetwork";
             this.openNetwork.Size = new System.Drawing.Size(160, 53);
             this.openNetwork.TabIndex = 19;
@@ -531,6 +557,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumUpTimeStart)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iterationCount)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -575,6 +602,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown iterationCount;
     }
 }
 

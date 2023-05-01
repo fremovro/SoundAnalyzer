@@ -216,7 +216,7 @@ namespace DPF_C_sh.Methods
             dataContext.neuronNetworkModel = new NeuronNetworkModel(input, output);
         }
 
-        public void NLearning(ref MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation)
+        public void NLearning(ref MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation, NumericUpDown iterationsCount)
         {
             int[] Layers = new int[dataContext.layersList.Count()];
             for (int i = 0; i < dataContext.layersList.Count(); i++)
@@ -255,7 +255,7 @@ namespace DPF_C_sh.Methods
                 //Количество итераций 
                 int iterations = 0;
                 Console.WriteLine();
-                while (error > 0.01 && iterations<100000)
+                while (error > 0.01 && iterations < iterationsCount.Value)
                 {
                     if (LearningAlg.Text == "BackPropagationLearning")
                         error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
