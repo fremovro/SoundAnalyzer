@@ -79,7 +79,7 @@ namespace DPF_C_sh
 
         private void learnNetwork_Click(object sender, EventArgs e)
         {
-            _dataManagerMethods.NLearning(ref _dataContext, algoritmSelector, activationSelector, iterationCount);
+            _dataManagerMethods.NLearning(ref _dataContext, algoritmSelector, activationSelector, iterationCount, progressLearning);
         }
 
         private void layerSelector_SelectedIndexChanged(object sender, EventArgs e)

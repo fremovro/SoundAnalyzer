@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ComboBox = System.Windows.Forms.ComboBox;
 using AForge.Math.Metrics;
 using DPF_C_sh.ActivationFunctionsCustom;
+using ProgressBar = System.Windows.Forms.ProgressBar;
 
 namespace DPF_C_sh.Methods
 {
@@ -216,7 +217,7 @@ namespace DPF_C_sh.Methods
             dataContext.neuronNetworkModel = new NeuronNetworkModel(input, output);
         }
 
-        public void NLearning(ref MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation, NumericUpDown iterationsCount)
+        public void NLearning(ref MainDataModel dataContext, ComboBox LearningAlg, ComboBox Activation, NumericUpDown iterationsCount, ProgressBar progressLearning)
         {
             int[] Layers = new int[dataContext.layersList.Count()];
             for (int i = 0; i < dataContext.layersList.Count(); i++)
@@ -257,6 +258,7 @@ namespace DPF_C_sh.Methods
                 Console.WriteLine();
                 while (error > 0.01 && iterations < iterationsCount.Value)
                 {
+                    progressLearning.Value = (int)(((double)iterations / (double)iterationsCount.Value) * 100.0);
                     if (LearningAlg.Text == "BackPropagationLearning")
                         error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
                     else if (LearningAlg.Text == "DeltaRuleLearning")
@@ -268,6 +270,7 @@ namespace DPF_C_sh.Methods
                     Console.WriteLine("learning error  ===>  {0}", error);
                     iterations++;
                 }
+                progressLearning.Value = 100;
                 Console.WriteLine("iterations  ===>  {0}", iterations);
                 Console.WriteLine();
                 Console.WriteLine("sim:");

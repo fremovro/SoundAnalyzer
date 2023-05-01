@@ -57,13 +57,13 @@
             this.activationSelector = new System.Windows.Forms.ComboBox();
             this.algoritmSelector = new System.Windows.Forms.ComboBox();
             this.layerSelector = new System.Windows.Forms.ComboBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.resultText = new System.Windows.Forms.RichTextBox();
             this.predictGet = new System.Windows.Forms.Button();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.progressLearning = new System.Windows.Forms.ProgressBar();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpMaxCount)).BeginInit();
@@ -309,6 +309,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.progressLearning);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.iterationCount);
             this.tabPage2.Controls.Add(this.label3);
@@ -319,7 +320,6 @@
             this.tabPage2.Controls.Add(this.activationSelector);
             this.tabPage2.Controls.Add(this.algoritmSelector);
             this.tabPage2.Controls.Add(this.layerSelector);
-            this.tabPage2.Controls.Add(this.richTextBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -378,7 +378,7 @@
             // 
             // learnNetwork
             // 
-            this.learnNetwork.Location = new System.Drawing.Point(105, 249);
+            this.learnNetwork.Location = new System.Drawing.Point(264, 151);
             this.learnNetwork.Name = "learnNetwork";
             this.learnNetwork.Size = new System.Drawing.Size(142, 23);
             this.learnNetwork.TabIndex = 20;
@@ -442,14 +442,6 @@
             this.layerSelector.Size = new System.Drawing.Size(186, 24);
             this.layerSelector.TabIndex = 16;
             this.layerSelector.SelectedIndexChanged += new System.EventHandler(this.layerSelector_SelectedIndexChanged);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(53, 30);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(552, 169);
-            this.richTextBox1.TabIndex = 14;
-            this.richTextBox1.Text = "";
             // 
             // tabPage3
             // 
@@ -537,6 +529,14 @@
             this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
             this.numericUpDown1.TabIndex = 0;
             // 
+            // progressLearning
+            // 
+            this.progressLearning.BackColor = System.Drawing.SystemColors.Control;
+            this.progressLearning.Location = new System.Drawing.Point(32, 52);
+            this.progressLearning.Name = "progressLearning";
+            this.progressLearning.Size = new System.Drawing.Size(593, 51);
+            this.progressLearning.TabIndex = 26;
+            // 
             // SoundAnalyzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -595,7 +595,6 @@
         private System.Windows.Forms.ComboBox activationSelector;
         private System.Windows.Forms.ComboBox algoritmSelector;
         private System.Windows.Forms.ComboBox layerSelector;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.RichTextBox resultText;
         private System.Windows.Forms.Button predictGet;
@@ -604,6 +603,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown iterationCount;
+        private System.Windows.Forms.ProgressBar progressLearning;
     }
 }
 
