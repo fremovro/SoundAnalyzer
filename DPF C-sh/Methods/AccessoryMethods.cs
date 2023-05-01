@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using DPF_C_sh.Models;
+using Microsoft.Office.Interop.Excel;
 using ComboBox = System.Windows.Forms.ComboBox;
 using TextBox = System.Windows.Forms.TextBox;
 
@@ -147,6 +149,20 @@ namespace DPF_C_sh.Methods
 
         public void CreateExcelRequencyRatios(MainDataModel dataContext)
         {
+            var musIntervals = new Dictionary<double, Color>()
+            {
+                { 0.89, Color.Pink }, // Большая секунда
+                { 0.84, Color.Blue }, // Малая терция
+                { 0.79, Color.Red }, // Большая терция
+                { 0.75, Color.Yellow }, // Кварта (чистая)
+                { 0.67, Color.Gray }, // Квинта (чистая)
+                { 0.63, Color.Orange }, // Малая секста
+                { 0.6, Color.Green }, // Большая секста
+                { 0.56, Color.YellowGreen }, // Маля септима
+                { 0.53, Color.OrangeRed }, // Большая септима
+                { 0.5, Color.BlueViolet } // Октава
+            };
+
             // Создаём объект - экземпляр нашего приложения
             Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
 
@@ -173,9 +189,17 @@ namespace DPF_C_sh.Methods
                     workSheet.Cells[index, el.Value.Count + 1] = $"Y1";
                     index++;
                 }
+                el.Value.Sort();
+                workSheet.Cells[index, 1] = dataContext.wavFiles
+                    .Where(e => e.Key == el.Key).FirstOrDefault().Value.fileName;
                 for (var i = 0; i < el.Value.Count; i++)
-                    workSheet.Cells[index, i + 1] = el.Value[i];
-                workSheet.Cells[index, el.Value.Count + 1] = output[el.Key][0];
+                {
+                    workSheet.Cells[index, i + 2] = el.Value[i];
+                    foreach (var interval in musIntervals)
+                        if (interval.Key == el.Value[i])
+                            workSheet.Cells[index, i + 2].Interior.Color = interval.Value;
+                }
+                workSheet.Cells[index, el.Value.Count + 2] = output[el.Key][0];
                 index++;
             }
             // Открываем созданный excel-файл
