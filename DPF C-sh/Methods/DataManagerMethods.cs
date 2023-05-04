@@ -186,8 +186,8 @@ namespace DPF_C_sh.Methods
                             f = false;
                     if (f) res.Add(resultTemp[i]);
                 }
-
-            res.RemoveRange((int)numUpMaxCount.Value, res.Count() - (int)numUpMaxCount.Value);
+            if(res.Count() > 0)
+                res.RemoveRange((int)numUpMaxCount.Value, res.Count() - (int)numUpMaxCount.Value);
 
             return res;
         }

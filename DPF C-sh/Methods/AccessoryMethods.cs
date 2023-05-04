@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -163,6 +164,15 @@ namespace DPF_C_sh.Methods
                 { 0.5, Color.BlueViolet } // Октава
             };
 
+            var emotionStr = new List<string>() { "Радость", "Страх", "Отвращение", "Грусть" };
+
+            var emotionMusInt = new List<List<double>>() {
+                new List<double> {0.5, 0.67, 0.75 },
+                new List<double> {0.53, 0.75, 0.63 },
+                new List<double> {0.63, 0.67, 0.56 },
+                new List<double> {0.84, 0.5, 0.6 }
+            };
+
             // Создаём объект - экземпляр нашего приложения
             Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
 
@@ -185,8 +195,12 @@ namespace DPF_C_sh.Methods
                 if (index == 1)
                 {
                     for (var i = 0; i < el.Value.Count; i++)
-                        workSheet.Cells[index, i + 1] = $"X{i + 1}";
-                    workSheet.Cells[index, el.Value.Count + 1] = $"Y1";
+                        workSheet.Cells[index, i + 2] = $"X{i + 1}";
+                    workSheet.Cells[index, el.Value.Count + 2] = $"Y1";
+
+                    for (int i = el.Value.Count + 3, j = 0; j < 4; i++, j++)
+                        workSheet.Cells[index, i] = emotionStr[j];
+
                     index++;
                 }
                 el.Value.Sort();
@@ -200,6 +214,16 @@ namespace DPF_C_sh.Methods
                             workSheet.Cells[index, i + 2].Interior.Color = interval.Value;
                 }
                 workSheet.Cells[index, el.Value.Count + 2] = output[el.Key][0];
+
+                for (int i = el.Value.Count + 3, j = 0; j < 4; i++, j++)
+                {
+                    var count = 0;
+                    for(var k = 0; k < 3; k++)
+                        if (el.Value.Contains(emotionMusInt[j][k]))
+                            count++;
+                    workSheet.Cells[index, i] = count;
+                }
+
                 index++;
             }
             // Открываем созданный excel-файл
