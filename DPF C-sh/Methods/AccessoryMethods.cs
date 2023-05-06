@@ -150,25 +150,45 @@ namespace DPF_C_sh.Methods
 
         public void CreateExcelRequencyRatios(MainDataModel dataContext)
         {
+            //var musIntervals = new Dictionary<double, Color>()
+            //{
+            //    { 0.89, Color.FromArgb(191, 191, 191)Серый }, // Большая секунда
+            //    { 0.84, Color.FromArgb(102, 255, 153)Зелёный }, // Малая терция
+            //    { 0.79, Color.FromArgb(102, 255, 153)Зелёный }, // Большая терция
+            //    { 0.75, Color.FromArgb(102, 255, 255)Бирюзоый }, // Кварта (чистая)
+            //    { 0.67, Color.FromArgb(255, 255, 153)Желтый }, // Квинта (чистая)
+            //    { 0.63, Color.FromArgb(255, 153, 255)Розовый }, // Малая секста
+            //    { 0.6, Color.FromArgb(102, 255, 153)Зеленый }, // Большая секста
+            //    { 0.56, Color.FromArgb(255, 153, 153)Красный }, // Маля септима
+            //    { 0.53, Color.FromArgb(153, 204, 255)Синий }, // Большая септима
+            //    { 0.5, Color.FromArgb(191, 191, 191)Серый } // Октава
+            //};
+            //var emotionStr = new List<string>() { "Радость", "Страх", "Отвращение" };
+            //var emotionMusInt = new List<List<double>>() {
+            //    new List<double> {0.79, 0.67, 0.75, 0.6, 0.84},
+            //    new List<double> {0.53, 0.75, 0.63 },
+            //    new List<double> {0.63, 0.67, 0.56 }
+            //    //new List<double> {0.84, 0.5, 0.6 }
+            //};
+
             var musIntervals = new Dictionary<double, Color>()
             {
-                { 0.89, Color.FromArgb(191, 191, 191) }, // Большая секунда
-                { 0.84, Color.FromArgb(102, 255, 153) }, // Малая терция
+                { 0.89, Color.FromArgb(102, 255, 153) }, // Большая секунда
+                { 0.84, Color.FromArgb(153, 204, 255) }, // Малая терция
                 { 0.79, Color.FromArgb(102, 255, 153) }, // Большая терция
-                { 0.75, Color.FromArgb(102, 255, 255) }, // Кварта (чистая)
-                { 0.67, Color.FromArgb(255, 255, 153) }, // Квинта (чистая)
-                { 0.63, Color.FromArgb(255, 153, 255) }, // Малая секста
-                { 0.6, Color.FromArgb(102, 255, 153) }, // Большая секста
-                { 0.56, Color.FromArgb(255, 153, 153) }, // Маля септима
-                { 0.53, Color.FromArgb(153, 204, 255) }, // Большая септима
+                { 0.75, Color.FromArgb(255, 153, 255) }, // Кварта (чистая)
+                { 0.67, Color.FromArgb(255, 153, 255) }, // Квинта (чистая)
+                { 0.63, Color.FromArgb(191, 191, 191) }, // Малая секста
+                { 0.6, Color.FromArgb(255, 153, 153) }, // Большая секста
+                { 0.56, Color.FromArgb(255, 255, 153) }, // Маля септима
+                { 0.53, Color.FromArgb(191, 191, 191) }, // Большая септима
                 { 0.5, Color.FromArgb(191, 191, 191) } // Октава
             };
             var emotionStr = new List<string>() { "Радость", "Страх", "Отвращение" };
             var emotionMusInt = new List<List<double>>() {
-                new List<double> {0.79, 0.67, 0.75, 0.6, 0.84},
-                new List<double> {0.53, 0.75, 0.63 },
-                new List<double> {0.63, 0.67, 0.56 }
-                //new List<double> {0.84, 0.5, 0.6 }
+                new List<double> {0.79, 0.89, 0.56},
+                new List<double> {0.84, 0.75, 0.67 },
+                new List<double> {0.6, 0.67, 0.75, 0.56 }
             };
 
             // Создаём объект - экземпляр нашего приложения
@@ -178,9 +198,11 @@ namespace DPF_C_sh.Methods
             Microsoft.Office.Interop.Excel.Workbook workBook;
 
             // Создаём экземпляр листа Excel
-            Microsoft.Office.Interop.Excel.Worksheet workSheet;
+            Microsoft.Office.Interop.Excel.Worksheet workSheet, workSheet2;
             workBook = excelApp.Workbooks.Add();
+            workBook.Worksheets.Add();
             workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets.get_Item(1);
+            workSheet2 = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets.get_Item(2);
 
             var rowCount = dataContext.requencyRatios.Count();
             var columnCount = dataContext.requencyRatios.First().Value.Count();
@@ -250,6 +272,30 @@ namespace DPF_C_sh.Methods
                     workSheet.Cells[i + upIndent, emotionMusInt.Count() + leftIdent].Interior.Color = Color.FromArgb(244, 176, 132);
             }
             workSheet.Cells[1, 1] = correctCount;
+
+            // Заполнение шапки
+            for (int i = 0, j = 0, upIndent = 1, leftIdent = 1; j < 11; j++)
+            {
+                if (j < 10)
+                    workSheet2.Cells[i + upIndent, j + leftIdent] = $"X{j + 1}";
+                if (j == 10)
+                    workSheet2.Cells[i + upIndent, j + leftIdent] = $"Y1";
+            }
+            for (int i = 0, upIndent = 2, leftIdent = 1; i < rowCount; i++)
+            {
+                for(int j = 0; j < 10; j++)
+                {
+                    var flag = false;
+                    if (dataContext.requencyRatios.ToArray()[i].Value.Contains(musIntervals.ToArray()[j].Key)) 
+                        flag = true;
+                    if(flag)
+                        workSheet2.Cells[i + upIndent, j + leftIdent] = "1";
+                    else
+                        workSheet2.Cells[i + upIndent, j + leftIdent] = "0";
+                }
+                workSheet2.Cells[i + upIndent, 11] = dataContext.wavFiles
+                    .Where(e => e.Key == dataContext.requencyRatios.ToArray()[i].Key).FirstOrDefault().Value.emotionNum;
+            }
 
             //double[][] output = new double[dataContext.requencyRatios.ToArray().Length][];
 
