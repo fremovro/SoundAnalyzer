@@ -96,5 +96,10 @@ namespace DPF_C_sh
         {
             _dataManagerMethods.NGetPredict(_dataContext, resultText, textBox1);
         }
+
+        private void OpenExcel_Click(object sender, EventArgs e)
+        {
+            _accessoryMethods.CreateExcelRequencyRatios(_dataContext);
+        }
     }
 }

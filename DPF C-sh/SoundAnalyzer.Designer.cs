@@ -59,9 +59,10 @@
             this.algoritmSelector = new System.Windows.Forms.ComboBox();
             this.layerSelector = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.resultText = new System.Windows.Forms.RichTextBox();
             this.predictGet = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.OpenExcel = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpMaxCount)).BeginInit();
@@ -84,7 +85,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(2, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(857, 431);
@@ -108,9 +109,9 @@
             this.tabPage1.Controls.Add(this.NumUpTimeRange);
             this.tabPage1.Controls.Add(this.NumUpTimeStart);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(849, 405);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DPF";
@@ -119,7 +120,7 @@
             // LeftChangeFile
             // 
             this.LeftChangeFile.Location = new System.Drawing.Point(9, 86);
-            this.LeftChangeFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LeftChangeFile.Margin = new System.Windows.Forms.Padding(2);
             this.LeftChangeFile.Name = "LeftChangeFile";
             this.LeftChangeFile.Size = new System.Drawing.Size(79, 29);
             this.LeftChangeFile.TabIndex = 39;
@@ -140,7 +141,7 @@
             // ChosenFileName
             // 
             this.ChosenFileName.Location = new System.Drawing.Point(10, 60);
-            this.ChosenFileName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChosenFileName.Margin = new System.Windows.Forms.Padding(2);
             this.ChosenFileName.Name = "ChosenFileName";
             this.ChosenFileName.Size = new System.Drawing.Size(166, 22);
             this.ChosenFileName.TabIndex = 41;
@@ -148,7 +149,7 @@
             // RightChangeFile
             // 
             this.RightChangeFile.Location = new System.Drawing.Point(96, 86);
-            this.RightChangeFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RightChangeFile.Margin = new System.Windows.Forms.Padding(2);
             this.RightChangeFile.Name = "RightChangeFile";
             this.RightChangeFile.Size = new System.Drawing.Size(79, 29);
             this.RightChangeFile.TabIndex = 40;
@@ -178,7 +179,7 @@
             // NumUpMaxCount
             // 
             this.NumUpMaxCount.Location = new System.Drawing.Point(9, 220);
-            this.NumUpMaxCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NumUpMaxCount.Margin = new System.Windows.Forms.Padding(2);
             this.NumUpMaxCount.Maximum = new decimal(new int[] {
             10,
             0,
@@ -202,7 +203,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(126, 6);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(60, 17);
             this.checkBox1.TabIndex = 36;
@@ -212,7 +213,7 @@
             // NumUpSmooth
             // 
             this.NumUpSmooth.Location = new System.Drawing.Point(9, 163);
-            this.NumUpSmooth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NumUpSmooth.Margin = new System.Windows.Forms.Padding(2);
             this.NumUpSmooth.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -309,9 +310,9 @@
             this.tabPage2.Controls.Add(this.algoritmSelector);
             this.tabPage2.Controls.Add(this.layerSelector);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(849, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "NeuronNetwork";
@@ -321,7 +322,7 @@
             // 
             this.progressLearning.BackColor = System.Drawing.SystemColors.Control;
             this.progressLearning.Location = new System.Drawing.Point(24, 42);
-            this.progressLearning.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressLearning.Margin = new System.Windows.Forms.Padding(2);
             this.progressLearning.Name = "progressLearning";
             this.progressLearning.Size = new System.Drawing.Size(445, 41);
             this.progressLearning.TabIndex = 26;
@@ -339,7 +340,7 @@
             // iterationCount
             // 
             this.iterationCount.Location = new System.Drawing.Point(665, 143);
-            this.iterationCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iterationCount.Margin = new System.Windows.Forms.Padding(2);
             this.iterationCount.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -382,7 +383,7 @@
             // learnNetwork
             // 
             this.learnNetwork.Location = new System.Drawing.Point(198, 123);
-            this.learnNetwork.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.learnNetwork.Margin = new System.Windows.Forms.Padding(2);
             this.learnNetwork.Name = "learnNetwork";
             this.learnNetwork.Size = new System.Drawing.Size(106, 19);
             this.learnNetwork.TabIndex = 20;
@@ -393,7 +394,7 @@
             // openNetwork
             // 
             this.openNetwork.Location = new System.Drawing.Point(690, 178);
-            this.openNetwork.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.openNetwork.Margin = new System.Windows.Forms.Padding(2);
             this.openNetwork.Name = "openNetwork";
             this.openNetwork.Size = new System.Drawing.Size(120, 43);
             this.openNetwork.TabIndex = 19;
@@ -410,7 +411,7 @@
             "ThresholdFunction",
             "TanhActivationFunction"});
             this.activationSelector.Location = new System.Drawing.Point(665, 103);
-            this.activationSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.activationSelector.Margin = new System.Windows.Forms.Padding(2);
             this.activationSelector.Name = "activationSelector";
             this.activationSelector.Size = new System.Drawing.Size(167, 21);
             this.activationSelector.TabIndex = 18;
@@ -425,7 +426,7 @@
             "ResilientBackpropagationLearning",
             "LevenbergMarquardtLearning"});
             this.algoritmSelector.Location = new System.Drawing.Point(665, 64);
-            this.algoritmSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.algoritmSelector.Margin = new System.Windows.Forms.Padding(2);
             this.algoritmSelector.Name = "algoritmSelector";
             this.algoritmSelector.Size = new System.Drawing.Size(167, 21);
             this.algoritmSelector.TabIndex = 17;
@@ -445,7 +446,7 @@
             "9",
             "10"});
             this.layerSelector.Location = new System.Drawing.Point(508, 64);
-            this.layerSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.layerSelector.Margin = new System.Windows.Forms.Padding(2);
             this.layerSelector.Name = "layerSelector";
             this.layerSelector.Size = new System.Drawing.Size(140, 21);
             this.layerSelector.TabIndex = 16;
@@ -453,21 +454,29 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.OpenExcel);
             this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.resultText);
             this.tabPage3.Controls.Add(this.predictGet);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(849, 405);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Predict";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(86, 79);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(299, 22);
+            this.textBox1.TabIndex = 18;
+            // 
             // resultText
             // 
             this.resultText.Location = new System.Drawing.Point(364, 119);
-            this.resultText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resultText.Margin = new System.Windows.Forms.Padding(2);
             this.resultText.Name = "resultText";
             this.resultText.Size = new System.Drawing.Size(219, 79);
             this.resultText.TabIndex = 17;
@@ -476,7 +485,7 @@
             // predictGet
             // 
             this.predictGet.Location = new System.Drawing.Point(86, 119);
-            this.predictGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.predictGet.Margin = new System.Windows.Forms.Padding(2);
             this.predictGet.Name = "predictGet";
             this.predictGet.Size = new System.Drawing.Size(120, 19);
             this.predictGet.TabIndex = 16;
@@ -484,12 +493,15 @@
             this.predictGet.UseVisualStyleBackColor = true;
             this.predictGet.Click += new System.EventHandler(this.predictGet_Click);
             // 
-            // textBox1
+            // OpenExcel
             // 
-            this.textBox1.Location = new System.Drawing.Point(86, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 22);
-            this.textBox1.TabIndex = 18;
+            this.OpenExcel.Location = new System.Drawing.Point(769, 3);
+            this.OpenExcel.Name = "OpenExcel";
+            this.OpenExcel.Size = new System.Drawing.Size(75, 23);
+            this.OpenExcel.TabIndex = 19;
+            this.OpenExcel.Text = "Excel";
+            this.OpenExcel.UseVisualStyleBackColor = true;
+            this.OpenExcel.Click += new System.EventHandler(this.OpenExcel_Click);
             // 
             // SoundAnalyzer
             // 
@@ -553,6 +565,7 @@
         private System.Windows.Forms.NumericUpDown iterationCount;
         private System.Windows.Forms.ProgressBar progressLearning;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button OpenExcel;
     }
 }
 

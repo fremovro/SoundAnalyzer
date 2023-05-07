@@ -7,6 +7,7 @@ using System.Drawing;
 using ComboBox = System.Windows.Forms.ComboBox;
 using TextBox = System.Windows.Forms.TextBox;
 using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Generic;
 
 namespace DPF_C_sh.Methods
 {
@@ -148,71 +149,142 @@ namespace DPF_C_sh.Methods
 
         public void CreateExcelRequencyRatios(MainDataModel dataContext)
         {
-            //// Создаём объект - экземпляр нашего приложения
-            //Excel.Application excelApp = new Excel.Application();
+            var musIntervals = new Dictionary<double, Color>()
+            {
+                { 0.89, Color.FromArgb(102, 255, 153) }, // Большая секунда
+                { 0.84, Color.FromArgb(153, 204, 255) }, // Малая терция
+                { 0.79, Color.FromArgb(102, 255, 153) }, // Большая терция
+                { 0.75, Color.FromArgb(255, 153, 255) }, // Кварта (чистая)
+                { 0.67, Color.FromArgb(255, 153, 255) }, // Квинта (чистая)
+                { 0.63, Color.FromArgb(191, 191, 191) }, // Малая секста
+                { 0.6, Color.FromArgb(255, 153, 153) }, // Большая секста
+                { 0.56, Color.FromArgb(255, 255, 153) }, // Маля септима
+                { 0.53, Color.FromArgb(191, 191, 191) }, // Большая септима
+                { 0.5, Color.FromArgb(191, 191, 191) } // Октава
+            };
+            var emotionStr = new List<string>() { "Радость", "Страх", "Отвращение" };
+            var emotionMusInt = new List<List<double>>() {
+                new List<double> {0.79, 0.89, 0.56},
+                new List<double> {0.84, 0.75, 0.67 },
+                new List<double> {0.6, 0.67, 0.75, 0.56 }
+            };
 
-            //// Создаём экземпляр рабочей книги Excel
-            //Excel.Workbook workBook;
+            // Создаём объект - экземпляр нашего приложения
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
 
-            //// Создаём экземпляр листа Excel
-            //Excel.Worksheet workSheet;
-            //Excel.Worksheet workSheet2;
-            //workBook = excelApp.Workbooks.Add();
-            //workSheet = (Excel.Worksheet)workBook.Worksheets.get_Item(1);
-            //workSheet2 = (Excel.Worksheet)workBook.Worksheets.Add();
+            // Создаём экземпляр рабочей книги Excel
+            Microsoft.Office.Interop.Excel.Workbook workBook;
 
-            //// Заполняем первый столбец листа из массива Y[0..n-1]
-            //for (int j = 1; j <= dataContext.requencyRatios.Count(); j++)
-            //{
-            //    workSheet.Cells[j, 1] = 10 * Math.Log10(dataContext.requencyRatios[j - 1].Amplitude / dataContext.maxDpfAmplitude);
-            //    workSheet.Cells[j, 2] = res[j - 1].Frecuency;
-            //}
+            // Создаём экземпляр листа Excel
+            Microsoft.Office.Interop.Excel.Worksheet workSheet, workSheet2;
+            workBook = excelApp.Workbooks.Add();
+            workBook.Worksheets.Add();
+            workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets.get_Item(1);
+            workSheet2 = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets.get_Item(2);
 
-            //// Вывод текста
-            //int cellerNum = 1;
-            //for (int k = 0; k < res.Count; k++)
-            //{
-            //    for (int l = k + 1; l < res.Count; l++)
-            //    {
-            //        if (res[k].Frecuency / res[l].Frecuency >= 1)
-            //        {
-            //            workSheet2.Cells[cellerNum, 1] = res[l].Frecuency / res[k].Frecuency;
-            //        }
-            //        else
-            //            workSheet2.Cells[cellerNum, 1] = res[k].Frecuency / res[l].Frecuency;
-            //        cellerNum++;
-            //    }
-            //}
+            var rowCount = dataContext.requencyRatios.Count();
+            var columnCount = dataContext.requencyRatios.First().Value.Count();
 
+            // Заполнение шапки
+            for (int i = 0, j = 0, k = 0, upIndent = 1, leftIdent = 2; j < columnCount + 4; j++)
+            {
+                if (j < columnCount)
+                    workSheet.Cells[i + upIndent, j + leftIdent] = $"X{j + 1}";
+                if (j == columnCount)
+                    workSheet.Cells[i + upIndent, j + leftIdent] = $"Y1";
+                if (j > columnCount)
+                {
+                    workSheet.Cells[i + upIndent, j + leftIdent] = emotionStr[k];
+                    k++;
+                }
+            }
 
-            //// Открываем созданный excel-файл
-            //excelApp.Visible = true;
-            //excelApp.UserControl = true;
+            // Заполнение названий
+            for (int i = 0, j = 0, upIndent = 2, leftIdent = 1; i < rowCount; i++)
+                workSheet.Cells[i + upIndent, j + leftIdent] = dataContext.wavFiles
+                    .Where(e => e.Key == dataContext.requencyRatios.ToArray()[i].Key).FirstOrDefault().Value.fileName;
 
-            //if (resultDataChart.Series.Count < 4)
-            //{
-            //    for (int i = 0; i < res.Count; i++)
-            //    {
-            //        resultDataChart.Series.Add("p" + i.ToString());
-            //        resultDataChart.Series["p" + i.ToString()].Color = Color.Red;
-            //        resultDataChart.Series["p" + i.ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            //        resultDataChart.Series["p" + i.ToString()].Points.AddXY(res[i].Frecuency, 10 * Math.Log10(res[i].Amplitude / dataContext.maxDpfAmplitude));
-            //    }
-            //}
-            //else
-            //{
-            //    for (int i = 0; resultDataChart.Series.Count != 1; i++)
-            //    {
-            //        resultDataChart.Series.Remove(resultDataChart.Series["p" + i.ToString()]);
-            //    }
-            //    for (int i = 0; i < res.Count; i++)
-            //    {
-            //        resultDataChart.Series.Add("p" + i.ToString());
-            //        resultDataChart.Series["p" + i.ToString()].Color = Color.Red;
-            //        resultDataChart.Series["p" + i.ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            //        resultDataChart.Series["p" + i.ToString()].Points.AddXY(res[i].Frecuency, 10 * Math.Log10(res[i].Amplitude / dataContext.maxDpfAmplitude));
-            //    }
-            //}
+            // Заполнение значений
+            for (int i = 0, upIndent = 2, leftIdent = 2; i < rowCount; i++)
+                for (int j = 0; j < columnCount; j++)
+                {
+                    dataContext.requencyRatios.ToArray()[i].Value.Sort();
+                    foreach (var interval in musIntervals)
+                        if (interval.Key == dataContext.requencyRatios.ToArray()[i].Value[j])
+                            workSheet.Cells[i + upIndent, j + leftIdent].Interior.Color = interval.Value;
+                    workSheet.Cells[i + upIndent, j + leftIdent] = dataContext.requencyRatios.ToArray()[i].Value[j];
+                }
+
+            // Заполнение предполагаемых результатов
+            for (int i = 0, j = 0, upIndent = 2, leftIdent = 2 + columnCount; i < rowCount; i++)
+                workSheet.Cells[i + upIndent, j + leftIdent] = dataContext.wavFiles
+                    .Where(e => e.Key == dataContext.requencyRatios.ToArray()[i].Key).FirstOrDefault().Value.emotionNum;
+
+            //Заполнение итогов по данному набору параметров
+            var correctCount = 0;
+            for (int i = 0, upIndent = 2, leftIdent = 3 + columnCount; i < rowCount; i++)
+            {
+                var maxCount = 0;
+                var maxCountIndex = 0;
+                for (int j = 0; j < emotionMusInt.Count(); j++)
+                {
+                    var count = 0;
+                    for (int k = 0; k < emotionMusInt[j].Count(); k++)
+                        if (dataContext.requencyRatios.ToArray()[i].Value.Contains(emotionMusInt[j][k]))
+                            count++;
+                    if (count > maxCount)
+                    {
+                        maxCount = count;
+                        maxCountIndex = j + 1;
+                    }
+                    workSheet.Cells[i + upIndent, j + leftIdent] = count;
+                }
+                workSheet.Cells[i + upIndent, emotionMusInt.Count() + leftIdent] = maxCountIndex;
+                if (maxCountIndex == dataContext.wavFiles
+                    .Where(e => e.Key == dataContext.requencyRatios.ToArray()[i].Key).FirstOrDefault().Value.emotionNum)
+                {
+                    workSheet.Cells[i + upIndent, emotionMusInt.Count() + leftIdent].Interior.Color = Color.FromArgb(169, 208, 142);
+                    correctCount++;
+                }
+                else
+                    workSheet.Cells[i + upIndent, emotionMusInt.Count() + leftIdent].Interior.Color = Color.FromArgb(244, 176, 132);
+            }
+            workSheet.Cells[1, 1] = correctCount;
+
+            // Заполнение шапки
+            for (int i = 0, j = 0, upIndent = 1, leftIdent = 1; j < 11; j++)
+            {
+                if (j < 10)
+                    workSheet2.Cells[i + upIndent, j + leftIdent] = $"X{j + 1}";
+                if (j == 10)
+                    workSheet2.Cells[i + upIndent, j + leftIdent] = $"Y1";
+            }
+            for (int i = 0, upIndent = 2, leftIdent = 1; i < rowCount; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    var flag = false;
+                    if (dataContext.requencyRatios.ToArray()[i].Value.Contains(musIntervals.ToArray()[j].Key))
+                        flag = true;
+                    if (flag)
+                        workSheet2.Cells[i + upIndent, j + leftIdent] = "1";
+                    else
+                        workSheet2.Cells[i + upIndent, j + leftIdent] = "0";
+                }
+                var temp = new List<double>()
+                {
+                    { 0 },{ 0 },{ 0 }
+                };
+                temp[dataContext.wavFiles
+                    .Where(e => e.Key == dataContext.requencyRatios.ToArray()[i].Key).FirstOrDefault().Value.emotionNum - 1] = 1; 
+
+                workSheet2.Cells[i + upIndent, 11] = temp[0];
+                workSheet2.Cells[i + upIndent, 12] = temp[1];
+                workSheet2.Cells[i + upIndent, 13] = temp[2];
+            }
+            // Открываем созданный excel-файл
+            excelApp.Visible = true;
+            excelApp.UserControl = true;
         }
 
         public void NLayerGenerator(ref MainDataModel dataContext, ComboBox layerCount, TabPage tabPage)
