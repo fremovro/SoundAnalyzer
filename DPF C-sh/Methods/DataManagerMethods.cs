@@ -198,21 +198,43 @@ namespace DPF_C_sh.Methods
         #region Методы для работы с нейросетью
         public void NSampleGeneration(ref MainDataModel dataContext)
         {
+            var musIntervals = new Dictionary<double, Color>()
+            {
+                { 0.89, Color.FromArgb(102, 255, 153) }, // Большая секунда
+                { 0.84, Color.FromArgb(153, 204, 255) }, // Малая терция
+                { 0.79, Color.FromArgb(102, 255, 153) }, // Большая терция
+                { 0.75, Color.FromArgb(255, 153, 255) }, // Кварта (чистая)
+                { 0.67, Color.FromArgb(255, 153, 255) }, // Квинта (чистая)
+                { 0.63, Color.FromArgb(191, 191, 191) }, // Малая секста
+                { 0.6, Color.FromArgb(255, 153, 153) }, // Большая секста
+                { 0.56, Color.FromArgb(255, 255, 153) }, // Маля септима
+                { 0.53, Color.FromArgb(191, 191, 191) }, // Большая септима
+                { 0.5, Color.FromArgb(191, 191, 191) } // Октава
+            };
+
             double[][] input = new double[dataContext.requencyRatios.ToArray().Length][];
             double[][] output = new double[dataContext.requencyRatios.ToArray().Length][];
 
             foreach (var el in dataContext.wavFiles)
             {
-                output[el.Key] = Enumerable.Repeat(0.0, 3).ToArray();
-                output[el.Key][el.Value.emotionNum] = 1;
+                output[el.Key] = new double[3];
+                output[el.Key][0] = 0;
+                output[el.Key][1] = 0;
+                output[el.Key][2] = 0;
+                output[el.Key][dataContext.wavFiles.Where(e => e.Key == el.Key).FirstOrDefault().Value.emotionNum - 1] = 1;
             }
 
-            int index = 0;
-            foreach(var el in dataContext.requencyRatios)
+            foreach(var reqVector in dataContext.requencyRatios)
             {
-                el.Value.Sort();
-                input[index] = el.Value.ToArray();
-                index++;
+                input[reqVector.Key] = new double[10];
+
+                for (var i = 0; i < musIntervals.Count(); i++)
+                {
+                    if (reqVector.Value.Contains(musIntervals.ToArray()[i].Key))
+                        input[reqVector.Key][i] = 1;
+                    else
+                        input[reqVector.Key][i] = 0;
+                }
             }
             dataContext.neuronNetworkModel = new NeuronNetworkModel(input, output);
         }
@@ -225,67 +247,97 @@ namespace DPF_C_sh.Methods
                 Layers[i] = (int)dataContext.layersList[i].Value;
             }
 
-            if (dataContext.neuronNetworkModel.network == null)
-            {
-                //Установить сеть
-                if (Activation.Text == "SigmoidFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
-                else if (Activation.Text == "ThresholdFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
-                else if (Activation.Text == "BipolarSigmoidFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
-                else if (Activation.Text == "TanhActivationFunction")
-                    dataContext.neuronNetworkModel.network = new ActivationNetwork(new TanhActivationFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length - 1).ToArray());
-                //Метод обучения - это алгоритм обучения восприятию 
-                if (LearningAlg.Text == "BackPropagationLearning")
-                    dataContext.neuronNetworkModel.teacher0 = new BackPropagationLearning(dataContext.neuronNetworkModel.network);
-                else if (LearningAlg.Text == "DeltaRuleLearning")
-                    dataContext.neuronNetworkModel.teacher1 = new DeltaRuleLearning(dataContext.neuronNetworkModel.network);
-                else if (LearningAlg.Text == "PerceptronLearning")
-                    dataContext.neuronNetworkModel.teacher2 = new PerceptronLearning(dataContext.neuronNetworkModel.network);
-                else if (LearningAlg.Text == "ResilientBackpropagationLearning")
-                    dataContext.neuronNetworkModel.teacher3 = new ResilientBackpropagationLearning(dataContext.neuronNetworkModel.network);
-                else if (LearningAlg.Text == "LevenbergMarquardtLearning")
-                    dataContext.neuronNetworkModel.teacher4 = new LevenbergMarquardtLearning(dataContext.neuronNetworkModel.network);
-                //dataContext.neuronNetworkModel.teacher0.LearningRate = 1;
-                //Определение абсолютная ошибка 
-                double error = 1.0;
-                Console.WriteLine();
-                Console.WriteLine("learning error  ===>  {0}", error);
+            //if (dataContext.neuronNetworkModel.network == null)
+            //{
+            //Установить сеть
+            if (Activation.Text == "SigmoidFunction")
+                dataContext.neuronNetworkModel.network = new ActivationNetwork(new SigmoidFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
+            else if (Activation.Text == "ThresholdFunction")
+                dataContext.neuronNetworkModel.network = new ActivationNetwork(new ThresholdFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
+            else if (Activation.Text == "BipolarSigmoidFunction")
+                dataContext.neuronNetworkModel.network = new ActivationNetwork(new BipolarSigmoidFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length-1).ToArray());
+            else if (Activation.Text == "TanhActivationFunction")
+                dataContext.neuronNetworkModel.network = new ActivationNetwork(new TanhActivationFunction(), Layers[0], Layers.Skip(1).Take(Layers.Length - 1).ToArray());
+            //Метод обучения - это алгоритм обучения восприятию 
+            if (LearningAlg.Text == "BackPropagationLearning")
+                dataContext.neuronNetworkModel.teacher0 = new BackPropagationLearning(dataContext.neuronNetworkModel.network);
+            else if (LearningAlg.Text == "DeltaRuleLearning")
+                dataContext.neuronNetworkModel.teacher1 = new DeltaRuleLearning(dataContext.neuronNetworkModel.network);
+            else if (LearningAlg.Text == "PerceptronLearning")
+                dataContext.neuronNetworkModel.teacher2 = new PerceptronLearning(dataContext.neuronNetworkModel.network);
+            else if (LearningAlg.Text == "ResilientBackpropagationLearning")
+                dataContext.neuronNetworkModel.teacher3 = new ResilientBackpropagationLearning(dataContext.neuronNetworkModel.network);
+            else if (LearningAlg.Text == "LevenbergMarquardtLearning")
+                dataContext.neuronNetworkModel.teacher4 = new LevenbergMarquardtLearning(dataContext.neuronNetworkModel.network);
+            //dataContext.neuronNetworkModel.teacher0.LearningRate = 1;
+            //Определение абсолютная ошибка 
+            double error = 1.0;
+            Console.WriteLine();
+            Console.WriteLine("learning error  ===>  {0}", error);
 
-                //Количество итераций 
-                int iterations = 0;
-                Console.WriteLine();
-                while (error > 0.01 && iterations < iterationsCount.Value)
-                {
-                    progressLearning.Value = (int)(((double)iterations / (double)iterationsCount.Value) * 100.0);
-                    if (LearningAlg.Text == "BackPropagationLearning")
-                        error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
-                    else if (LearningAlg.Text == "DeltaRuleLearning")
-                        error = dataContext.neuronNetworkModel.teacher1.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
-                    else if (LearningAlg.Text == "PerceptronLearning")
-                        error = dataContext.neuronNetworkModel.teacher2.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
-                    else if (LearningAlg.Text == "ResilientBackpropagationLearning")
-                        error = dataContext.neuronNetworkModel.teacher3.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
-                    Console.WriteLine("learning error  ===>  {0}", error);
-                    iterations++;
-                }
-                progressLearning.Value = 100;
-                Console.WriteLine("iterations  ===>  {0}", iterations);
-                Console.WriteLine();
-                Console.WriteLine("sim:");
-                //dataContext.neuronNetworkModel.network.Save("learnedNetwork");
+            //Количество итераций 
+            int iterations = 0;
+            Console.WriteLine();
+            while (error > 0.01 && iterations < iterationsCount.Value)
+            {
+                progressLearning.Value = (int)(((double)iterations / (double)iterationsCount.Value) * 100.0);
+                if (LearningAlg.Text == "BackPropagationLearning")
+                    error = dataContext.neuronNetworkModel.teacher0.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                //else if (LearningAlg.Text == "DeltaRuleLearning")
+                //    error = dataContext.neuronNetworkModel.teacher1.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                //else if (LearningAlg.Text == "PerceptronLearning")
+                //    error = dataContext.neuronNetworkModel.teacher2.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                else if (LearningAlg.Text == "ResilientBackpropagationLearning")
+                    error = dataContext.neuronNetworkModel.teacher3.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                else if (LearningAlg.Text == "LevenbergMarquardtLearning")
+                    error = dataContext.neuronNetworkModel.teacher4.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                Console.WriteLine("learning error  ===>  {0}", error);
+                iterations++;
             }
+            progressLearning.Value = 100;
+            Console.WriteLine("iterations  ===>  {0}", iterations);
+            Console.WriteLine();
+            Console.WriteLine("sim:");
+            //dataContext.neuronNetworkModel.network.Save("learnedNetwork");
+            //}
         }
 
-        public void NGetPredict(MainDataModel dataContext, RichTextBox resText, NumericUpDown numericUpDown1, NumericUpDown numericUpDown2, NumericUpDown numericUpDown3)
+        public void NGetPredict(MainDataModel dataContext, RichTextBox resText, System.Windows.Forms.TextBox text)
         {
+            var temp = new List<double>();
+            foreach (var element in text.Text.ToString().Split('-'))
+                temp.Add(Convert.ToDouble(element));
+            while (temp.Count < 10)
+                temp.Add(0);
+
             double[][] PredictData = new double[1][];
-            PredictData[0] = new double[] { (double)numericUpDown1.Value, (double)numericUpDown2.Value, (double)numericUpDown3.Value };
+            PredictData[0] = new double[] {
+                temp[0],
+                temp[1],
+                temp[2],
+                temp[3],
+                temp[4],
+                temp[5],
+                temp[6],
+                temp[7],
+                temp[8],
+                temp[9]
+            };
             string res = "";
             for (int i = 0; i < PredictData.Length; i++)
             {
-                res += String.Format("sim{0}:  ===>  {1}, {2}, {3}\n", i, dataContext.neuronNetworkModel.network.Compute(PredictData[i])[0], dataContext.neuronNetworkModel.network.Compute(PredictData[i])[1], dataContext.neuronNetworkModel.network.Compute(PredictData[i])[2]);
+                var result = new List<double>
+                {
+                    dataContext.neuronNetworkModel.network.Compute(PredictData[i])[0],
+                    dataContext.neuronNetworkModel.network.Compute(PredictData[i])[1],
+                    dataContext.neuronNetworkModel.network.Compute(PredictData[i])[2]
+                };
+
+                res += String.Format("sim{0}:  ===>  {1}\n{2}\n{3}\n", i, result[0],
+                    result[1], result[2]);
+
+                var emotion = result[0] == result.Max() ? "Радость" : (result[1] == result.Max() ? "Страх" : "Отвращение");
+                res += "\n" + emotion;
             }
             resText.Text = res;
         }

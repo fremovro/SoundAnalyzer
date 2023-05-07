@@ -18,13 +18,15 @@ namespace DPF_C_sh.ActivationFunctionsCustom
 
         public double Derivative(double x)
         {
-            double tanh = Function(x);
-            return 1 - tanh * tanh;
+            //double tanh = Function(x);
+            //return 1 - tanh * tanh;
+            return 1 / (Math.Sinh(x) * Math.Sinh(x));
         }
 
         public double Derivative2(double y)
         {
-            return 1 - y * y;
+            //return 1 - y * y;
+            return -2 * ((1 / Math.Cosh(y)) * (1 / Math.Cosh(y))) * Math.Tanh(y);
         }
     }
 }

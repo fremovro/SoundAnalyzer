@@ -94,7 +94,7 @@ namespace DPF_C_sh
 
         private void predictGet_Click(object sender, EventArgs e)
         {
-            _dataManagerMethods.NGetPredict(_dataContext, resultText, numericUpDown1, numericUpDown2, numericUpDown3);
+            _dataManagerMethods.NGetPredict(_dataContext, resultText, textBox1);
         }
     }
 }

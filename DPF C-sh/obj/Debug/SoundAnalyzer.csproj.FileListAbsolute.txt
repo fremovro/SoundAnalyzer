@@ -87,3 +87,16 @@ C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Math.Core.xm
 C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Neuro.xml
 C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Statistics.dll
 C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Statistics.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.dll.config
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Genetic.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Math.Core.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Math.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Neuro.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Statistics.dll
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Genetic.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Math.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Math.Core.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Neuro.xml
+C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Statistics.xml
