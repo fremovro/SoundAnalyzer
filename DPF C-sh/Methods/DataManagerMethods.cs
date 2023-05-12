@@ -217,11 +217,16 @@ namespace DPF_C_sh.Methods
 
             foreach (var el in dataContext.wavFiles)
             {
-                output[el.Key] = new double[3];
+                output[el.Key] = new double[8];
                 output[el.Key][0] = 0;
                 output[el.Key][1] = 0;
                 output[el.Key][2] = 0;
-                output[el.Key][dataContext.wavFiles.Where(e => e.Key == el.Key).FirstOrDefault().Value.emotionNum - 1] = 1;
+                output[el.Key][3] = 0;
+                output[el.Key][4] = 0;
+                output[el.Key][5] = 0;
+                output[el.Key][6] = 0;
+                output[el.Key][7] = 0;
+                output[el.Key][dataContext.wavFiles.Where(e => e.Key == el.Key).FirstOrDefault().Value.emotionNum] = 1;
             }
 
             foreach(var reqVector in dataContext.requencyRatios)

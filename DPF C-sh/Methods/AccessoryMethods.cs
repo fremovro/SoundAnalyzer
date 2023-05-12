@@ -273,10 +273,10 @@ namespace DPF_C_sh.Methods
                 }
                 var temp = new List<double>()
                 {
-                    { 0 },{ 0 },{ 0 }
+                    { 0 },{ 0 },{ 0 },{ 0 },{ 0 },{ 0 },{ 0 },{ 0 }
                 };
                 temp[dataContext.wavFiles
-                    .Where(e => e.Key == dataContext.requencyRatios.ToArray()[i].Key).FirstOrDefault().Value.emotionNum - 1] = 1; 
+                    .Where(e => e.Key == dataContext.requencyRatios.ToArray()[i].Key).FirstOrDefault().Value.emotionNum] = 1; 
 
                 workSheet2.Cells[i + upIndent, 11] = temp[0];
                 workSheet2.Cells[i + upIndent, 12] = temp[1];

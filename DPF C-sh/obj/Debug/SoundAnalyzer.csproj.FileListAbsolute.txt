@@ -100,3 +100,4 @@ C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Math.xml
 C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Math.Core.xml
 C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Neuro.xml
 C:\Users\fremovro\source\repos\SoundAnalyzer\DPF C-sh\bin\Debug\Accord.Statistics.xml
+C:\Users\Admin\source\repos\SoundAnalyzer\DPF C-sh\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
