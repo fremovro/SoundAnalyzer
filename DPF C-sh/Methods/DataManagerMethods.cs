@@ -14,6 +14,7 @@ using ComboBox = System.Windows.Forms.ComboBox;
 using AForge.Math.Metrics;
 using DPF_C_sh.ActivationFunctionsCustom;
 using ProgressBar = System.Windows.Forms.ProgressBar;
+using Accord.Math;
 
 namespace DPF_C_sh.Methods
 {
@@ -203,7 +204,7 @@ namespace DPF_C_sh.Methods
 
             foreach (var el in dataContext.wavFiles)
             {
-                output[el.Key] = Enumerable.Repeat(0.0, 3).ToArray();
+                output[el.Key] = Enumerable.Repeat(0.0, 8).ToArray();
                 output[el.Key][el.Value.emotionNum] = 1;
             }
 
@@ -225,7 +226,7 @@ namespace DPF_C_sh.Methods
                 Layers[i] = (int)dataContext.layersList[i].Value;
             }
 
-            if (dataContext.neuronNetworkModel.network == null)
+            if (true)
             {
                 //Установить сеть
                 if (Activation.Text == "SigmoidFunction")
@@ -267,6 +268,8 @@ namespace DPF_C_sh.Methods
                         error = dataContext.neuronNetworkModel.teacher2.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
                     else if (LearningAlg.Text == "ResilientBackpropagationLearning")
                         error = dataContext.neuronNetworkModel.teacher3.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
+                    else if (LearningAlg.Text == "LevenbergMarquardtLearning")
+                        error = dataContext.neuronNetworkModel.teacher4.RunEpoch(dataContext.neuronNetworkModel.input, dataContext.neuronNetworkModel.output);
                     Console.WriteLine("learning error  ===>  {0}", error);
                     iterations++;
                 }
@@ -274,18 +277,20 @@ namespace DPF_C_sh.Methods
                 Console.WriteLine("iterations  ===>  {0}", iterations);
                 Console.WriteLine();
                 Console.WriteLine("sim:");
-                //dataContext.neuronNetworkModel.network.Save("learnedNetwork");
+                dataContext.neuronNetworkModel.network.Save("learnedNetwork");
             }
         }
 
-        public void NGetPredict(MainDataModel dataContext, RichTextBox resText, NumericUpDown numericUpDown1, NumericUpDown numericUpDown2, NumericUpDown numericUpDown3)
+        public void NGetPredict(MainDataModel dataContextPredict,MainDataModel dataContext, RichTextBox resText)
         {
-            double[][] PredictData = new double[1][];
-            PredictData[0] = new double[] { (double)numericUpDown1.Value, (double)numericUpDown2.Value, (double)numericUpDown3.Value };
             string res = "";
-            for (int i = 0; i < PredictData.Length; i++)
+            string[] namesOfEmotions= { "Радость", "Гнев", "Страх", "Грусть", "Гнев(ложь)", "Грусть(ложь)", "Радость(ложь)", "Страх(ложь)" }; 
+            for (int i = 0; i < dataContextPredict.neuronNetworkModel.input.Length; i++)
             {
-                res += String.Format("sim{0}:  ===>  {1}, {2}, {3}\n", i, dataContext.neuronNetworkModel.network.Compute(PredictData[i])[0], dataContext.neuronNetworkModel.network.Compute(PredictData[i])[1], dataContext.neuronNetworkModel.network.Compute(PredictData[i])[2]);
+                var resultsCalculated = dataContext.neuronNetworkModel.network.Compute(dataContextPredict.neuronNetworkModel.input[i]);
+                var emotionPredicted = Array.IndexOf(resultsCalculated, resultsCalculated.Max());
+                var good = emotionPredicted == dataContextPredict.neuronNetworkModel.output[i].IndexOf(1) ? true : false;
+                res += String.Format("{0}).  ===>  {1}, {2}\n", i, namesOfEmotions[emotionPredicted], good);
             }
             resText.Text = res;
         }

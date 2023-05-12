@@ -47,6 +47,7 @@
             this.NumUpTimeRange = new System.Windows.Forms.NumericUpDown();
             this.NumUpTimeStart = new System.Windows.Forms.NumericUpDown();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.progressLearning = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
             this.iterationCount = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.progressLearning = new System.Windows.Forms.ProgressBar();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumUpMaxCount)).BeginInit();
@@ -328,6 +328,14 @@
             this.tabPage2.Text = "NeuronNetwork";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // progressLearning
+            // 
+            this.progressLearning.BackColor = System.Drawing.SystemColors.Control;
+            this.progressLearning.Location = new System.Drawing.Point(32, 52);
+            this.progressLearning.Name = "progressLearning";
+            this.progressLearning.Size = new System.Drawing.Size(593, 51);
+            this.progressLearning.TabIndex = 26;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -471,7 +479,7 @@
             this.predictGet.Name = "predictGet";
             this.predictGet.Size = new System.Drawing.Size(160, 23);
             this.predictGet.TabIndex = 16;
-            this.predictGet.Text = "Test NN";
+            this.predictGet.Text = "Predict from files";
             this.predictGet.UseVisualStyleBackColor = true;
             this.predictGet.Click += new System.EventHandler(this.predictGet_Click);
             // 
@@ -528,14 +536,6 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
             this.numericUpDown1.TabIndex = 0;
-            // 
-            // progressLearning
-            // 
-            this.progressLearning.BackColor = System.Drawing.SystemColors.Control;
-            this.progressLearning.Location = new System.Drawing.Point(32, 52);
-            this.progressLearning.Name = "progressLearning";
-            this.progressLearning.Size = new System.Drawing.Size(593, 51);
-            this.progressLearning.TabIndex = 26;
             // 
             // SoundAnalyzer
             // 

@@ -94,7 +94,24 @@ namespace DPF_C_sh
 
         private void predictGet_Click(object sender, EventArgs e)
         {
-            _dataManagerMethods.NGetPredict(_dataContext, resultText, numericUpDown1, numericUpDown2, numericUpDown3);
+            MainDataModel dataPredictContext = new MainDataModel();
+            OpenFileDialog fileDialog = new OpenFileDialog()
+            {
+                Multiselect = true,
+                Title = "Select .wav files"
+            };
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                _dataManagerMethods.ReadWavFiles(fileDialog, NumUpTimeStart,
+                    NumUpTimeRange, ref dataPredictContext);
+            }
+
+            _dataManagerMethods.DPF(ref dataPredictContext);
+            _dataManagerMethods.CalculateRequencyRatios(ref dataPredictContext, NumUpMaxCount, NumUpIdent);
+            _dataManagerMethods.NSampleGeneration(ref dataPredictContext);
+
+            _dataManagerMethods.NGetPredict(dataPredictContext, _dataContext, resultText);
         }
     }
 }
